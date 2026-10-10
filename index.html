@@ -130,6 +130,9 @@
   .opt .meta{font-size:14px;color:var(--mist);font-variant-numeric:tabular-nums}
   .opt .meta b{color:var(--slate)}
   .opt .bed{font-size:14px;font-weight:600;color:var(--moss)}
+  .note.work{margin:0 0 24px;border-left-color:var(--rust)}
+  .note.work p{margin:4px 0 6px;font-size:14px;color:var(--mist)}
+  .note.work li{font-variant-numeric:tabular-nums}
   .opt .note{font-size:14px;color:var(--basalt);margin:0}
   .opt .go{margin-top:auto;align-self:flex-start;font:600 14px var(--sans);color:var(--sea);text-decoration:none;border-bottom:1px solid currentColor;padding-top:4px}
   .opt .links{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;padding-top:4px}
@@ -224,6 +227,7 @@ const DAYS = [
  },
  {id:"seg19",label:"Seg 19",c:"var(--sea)",hex:"#2E6E8E",num:"19",title:"Abadias, a fronteira e a ilha que fecha",
   intro:"As abadias do Tweed, o mirante de Walter Scott, a travessia para a Inglaterra em Coldstream e, à tarde, a estrada que o mar cobre até Holy Island. Às 20:10 a maré fecha a estrada e vocês ficam na ilha.",
+  work:["11:00–11:15 · Paris 12:00–12:15 · Melrose → Scott's View e Dryburgh, 15 min", "12:15–12:30 · Paris 13:15–13:30 · Dryburgh → Smailholm Tower, 15 min", "12:55–13:15 · Paris 13:55–14:15 · Smailholm → Kelso, 15 min", "14:15–14:45 · Paris 15:15–15:45 · Kelso → Coldstream → Norham, 25 min", "15:10–15:30 · Paris 16:10–16:30 · Norham → Berwick, 15 min", "15:35–16:05 · Paris 16:35–17:05 · Berwick → causeway → Holy Island, 25 min. Sinal fraco na ilha."],
   stops:[
    {t:"10:00",n:"Melrose Abbey",b:"Claustro, museu e o coração embalsamado de Robert the Bruce; a igreja está em obras de conservação, o cenário continua.",lat:55.5991,lon:-2.7175,wiki:"Melrose_Abbey"},
    {t:"11:15",n:"Scott's View e Dryburgh Abbey",b:"O mirante sobre o Tweed e os Eildon Hills, a vista favorita de Scott; logo abaixo, as ruínas de Dryburgh à beira do rio, onde ele está enterrado (jardins abertos).",lat:55.5968,lon:-2.6531,wiki:"Scott's_View"},
@@ -243,6 +247,7 @@ const DAYS = [
  },
  {id:"ter20",label:"Ter 20",c:"var(--moss)",hex:"#4F6B4A",num:"20",title:"A costa dos castelos",
   intro:"O amanhecer na ilha vazia e a saída antes que a maré a feche de novo, Bamburgh sobre as dunas, a caminhada até Dunstanburgh, a livraria na estação de Alnwick e Warkworth no meandro do rio. Newcastle ao fim da tarde, sem pressa.",
+  work:["08:45–09:15 · Paris 09:45–10:15 · Holy Island → Bamburgh, 25 min", "11:45–12:10 · Paris 12:45–13:10 · Bamburgh → Craster, 25 min", "14:10–14:30 · Paris 15:10–15:30 · Craster → Alnwick, 20 min", "15:45–16:00 · Paris 16:45–17:00 · Alnwick → Warkworth, 15 min", "16:45–17:30 · Paris 17:45–18:30 · Warkworth → Newcastle pela A1, 45 min"],
   stops:[
    {t:"até 09:00",n:"Amanhecer e saída da ilha",b:"O sol nasce às 07:50 com a ilha vazia. Café da manhã no hotel e atravessar até 09:00: a estrada fecha às 09:10.",lat:55.6762,lon:-1.8470,wiki:"Holy_Island_of_Lindisfarne"},
    {t:"10:00",n:"Bamburgh Castle",b:"Fortaleza sobre dunas, berço do reino da Nortúmbria, Bebbanburg nos livros de Bernard Cornwell. A vista da praia já vale; os salões abrem às 10.",lat:55.6089,lon:-1.7094,wiki:"Bamburgh_Castle"},
@@ -274,6 +279,7 @@ const DAYS = [
  },
  {id:"sex23",label:"Sex 23",c:"var(--rust)",hex:"#A8542F",num:"23",title:"A Muralha, Glasgow e o voo",
   intro:"Checkout cedo, um único trecho da Muralha de Adriano, o mais bonito, e depois para o norte até Glasgow: catedral medieval, a Necrópole no alto do morro e almoço na Merchant City. Do outro lado da M8, o aeroporto de Edimburgo. Carro devolvido até 16:15, voo às 18:40.",
+  work:["08:30–09:30 · Paris 09:30–10:30 · Newcastle → Steel Rigg pela Military Road, 1h. Sinal fraco perto da muralha.", "10:45–13:00 · Paris 11:45–14:00 · Steel Rigg → Carlisle → Glasgow, 2h15. O trecho mais longo da semana; sinal irregular na M74 entre Gretna e Glasgow.", "15:15–16:15 · Paris 16:15–17:15 · Glasgow → aeroporto de Edimburgo pela M8, ~50 min"],
   stops:[
    {t:"08:30",n:"Checkout em Newcastle",b:"Uma hora até Steel Rigg pela Military Road (B6318), a estrada de 1750 construída em cima da própria muralha.",lat:55.0130,lon:-1.9000,wiki:"B6318_road"},
    {t:"09:30",n:"Steel Rigg e Sycamore Gap",b:"O trecho mais dramático da muralha, sobre os penhascos do Whin Sill. Ida e volta de ~1h a pé até o vão onde ficava a árvore, derrubada em 2023. Aberto o dia todo, sem ingresso; estacionamento pago.",lat:54.9975,lon:-2.3875,wiki:"Sycamore_Gap_tree"},
@@ -703,6 +709,7 @@ DAYS.forEach(day=>{
   const tide = day.tide ? `<div class="note"><h3>Marés de Holy Island</h3><div class="tide">${day.tide.map(tideBar).join("")}<div class="key"><i style="background:var(--sea)"></i> estrada segura &nbsp; <i style="background:var(--sand)"></i> coberta pelo mar</div></div>${day.note?`<ul>${day.note.items.map(x=>`<li>${x}</li>`).join("")}</ul>`:""}</div>` : (day.note?`<div class="note"><h3>${day.note.h}</h3><ul>${day.note.items.map(x=>`<li>${x}</li>`).join("")}</ul></div>`:"");
   sec.innerHTML = `
     <div class="dayhead"><div class="num">${day.num}</div><div><h2>${day.title}</h2><p>${day.intro}</p></div></div>
+    ${day.work?`<div class="note work"><h3>🚗 Na estrada em horário útil de Paris</h3><p>Horário do Reino Unido; Paris está 1h à frente (expediente 09:00–18:00 em Paris = 08:00–17:00 aqui).</p><ul>${day.work.map(x=>`<li>${x}</li>`).join("")}</ul></div>`:""}
     <ol class="stops">${stops}</ol>
     ${tide}`;
   content.appendChild(sec);
