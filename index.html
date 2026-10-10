@@ -133,6 +133,11 @@
   .note.work{margin:0 0 24px;border-left-color:var(--rust)}
   .note.work p{margin:4px 0 6px;font-size:14px;color:var(--mist)}
   .note.work li{font-variant-numeric:tabular-nums}
+  .wx{display:flex;flex-direction:column;gap:6px;margin:0 0 20px;padding:12px 14px;background:var(--paper);border:1px solid var(--fog-2);border-radius:6px}
+  .wxc{display:flex;gap:10px;align-items:baseline;font-size:15px;font-variant-numeric:tabular-nums}
+  .wxc .ic{font-size:20px;line-height:1}
+  .wxc b{font-weight:600;color:var(--slate)}
+  .wxn{font-size:12px;color:var(--mist)}
   .opt .note{font-size:14px;color:var(--basalt);margin:0}
   .opt .go{margin-top:auto;align-self:flex-start;font:600 14px var(--sans);color:var(--sea);text-decoration:none;border-bottom:1px solid currentColor;padding-top:4px}
   .opt .links{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;padding-top:4px}
@@ -715,6 +720,42 @@ async function roadRoute(day){
   }catch(e){ /* mantém a linha reta */ }
 }
 
+
+/* previsão do tempo (Open-Meteo): instantâneo de 10/10, atualizado ao abrir a página */
+const WX_LOC = {"edi": ["Edimburgo", 55.95, -3.19], "mel": ["Melrose", 55.6, -2.72], "hi": ["Holy Island", 55.67, -1.8], "bam": ["Bamburgh e Alnwick", 55.55, -1.7], "ncl": ["Newcastle", 54.97, -1.6], "wall": ["Muralha", 55.0, -2.39], "gla": ["Glasgow", 55.86, -4.25]};
+const WX_DAY = {"sex16": ["edi"], "sab17": ["edi"], "dom18": ["edi", "mel"], "seg19": ["mel", "hi"], "ter20": ["hi", "bam", "ncl"], "qua21": ["ncl"], "qui22": ["ncl"], "sex23": ["wall", "gla"]};
+const WX_DATE = {"sex16": "2026-10-16", "sab17": "2026-10-17", "dom18": "2026-10-18", "seg19": "2026-10-19", "ter20": "2026-10-20", "qua21": "2026-10-21", "qui22": "2026-10-22", "sex23": "2026-10-23"};
+let WX = {"edi": {"2026-10-16": [51, 8, 11, 25, 32], "2026-10-17": [1, 5, 11, 15, 27], "2026-10-18": [3, 4, 11, 19, 29], "2026-10-19": [3, 8, 14, 20, 45], "2026-10-20": [2, 10, 15, 16, 38], "2026-10-21": [45, 6, 10, 14, 23], "2026-10-22": [45, 6, 14, 20, 29], "2026-10-23": [3, 10, 15, 22, 31]}, "mel": {"2026-10-16": [3, 4, 12, 28, 35], "2026-10-17": [0, 3, 12, 12, 25], "2026-10-18": [3, 1, 12, 13, 17], "2026-10-19": [3, 5, 14, 18, 29], "2026-10-20": [2, 7, 16, 14, 19], "2026-10-21": [45, 4, 13, 12, 12], "2026-10-22": [45, 6, 14, 14, 27], "2026-10-23": [51, 8, 16, 16, 30]}, "hi": {"2026-10-16": [3, 7, 12, 28, 36], "2026-10-17": [0, 5, 12, 18, 28], "2026-10-18": [3, 5, 12, 22, 22], "2026-10-19": [3, 6, 15, 22, 47], "2026-10-20": [3, 10, 17, 15, 44], "2026-10-21": [45, 8, 12, 18, 19], "2026-10-22": [45, 9, 15, 20, 28], "2026-10-23": [3, 9, 16, 16, 41]}, "bam": {"2026-10-16": [3, 7, 13, 28, 33], "2026-10-17": [0, 6, 12, 18, 28], "2026-10-18": [3, 4, 13, 22, 17], "2026-10-19": [3, 5, 15, 22, 32], "2026-10-20": [3, 8, 16, 15, 27], "2026-10-21": [3, 8, 12, 18, 17], "2026-10-22": [45, 9, 15, 20, 20], "2026-10-23": [3, 10, 15, 16, 42]}, "ncl": {"2026-10-16": [3, 8, 13, 28, 34], "2026-10-17": [0, 4, 12, 16, 28], "2026-10-18": [3, 3, 12, 20, 17], "2026-10-19": [3, 5, 13, 21, 35], "2026-10-20": [3, 9, 16, 15, 31], "2026-10-21": [45, 7, 14, 18, 14], "2026-10-22": [45, 10, 15, 22, 19], "2026-10-23": [3, 9, 16, 17, 28]}, "wall": {"2026-10-16": [3, 6, 10, 33, 40], "2026-10-17": [0, 2, 11, 18, 23], "2026-10-18": [3, 2, 11, 20, 18], "2026-10-19": [3, 5, 11, 22, 38], "2026-10-20": [3, 8, 14, 20, 31], "2026-10-21": [45, 7, 13, 14, 18], "2026-10-22": [45, 9, 13, 18, 26], "2026-10-23": [51, 9, 14, 25, 27]}, "gla": {"2026-10-16": [51, 7, 10, 51, 32], "2026-10-17": [45, 3, 12, 16, 21], "2026-10-18": [45, 4, 10, 21, 28], "2026-10-19": [3, 7, 13, 22, 31], "2026-10-20": [45, 6, 12, 20, 20], "2026-10-21": [45, 4, 9, 18, 11], "2026-10-22": [45, 6, 13, 27, 26], "2026-10-23": [3, 8, 15, 27, 19]}}, WX_WHEN = "10 de outubro";
+function wxDesc(c){
+  if(c===0) return ["☀️","Céu limpo"]; if(c===1) return ["🌤️","Quase limpo"]; if(c===2) return ["⛅","Sol entre nuvens"];
+  if(c===3) return ["☁️","Nublado"]; if(c===45||c===48) return ["🌫️","Neblina"]; if(c>=51&&c<=57) return ["🌦️","Garoa"];
+  if(c>=61&&c<=67) return ["🌧️","Chuva"]; if(c>=71&&c<=77) return ["🌨️","Neve"]; if(c>=80&&c<=82) return ["🌦️","Pancadas de chuva"];
+  if(c>=95) return ["⛈️","Trovoadas"]; return ["🌥️","Variável"];
+}
+function renderWx(){
+  document.querySelectorAll(".wx[data-day]").forEach(el=>{
+    const id = el.dataset.day, date = WX_DATE[id];
+    el.innerHTML = WX_DAY[id].map(k=>{
+      const v = WX[k] && WX[k][date]; if(!v) return "";
+      const [ic,txt] = wxDesc(v[0]);
+      return `<div class="wxc"><span class="ic" aria-hidden="true">${ic}</span><span><b>${WX_LOC[k][0]}</b> ${txt} · ${v[1]}–${v[2]} °C · chuva ${v[3]}% · rajadas ${v[4]} km/h</span></div>`;
+    }).join("") + `<div class="wxn">Previsão Open-Meteo de ${WX_WHEN}. A mais de 5 dias ela ainda muda bastante.</div>`;
+  });
+}
+async function liveWx(){
+  try{
+    const keys = Object.keys(WX_LOC);
+    const r = await fetch("https://api.open-meteo.com/v1/forecast?latitude="+keys.map(k=>WX_LOC[k][1])+"&longitude="+keys.map(k=>WX_LOC[k][2])+"&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_gusts_10m_max&timezone=Europe%2FLondon&start_date=2026-10-16&end_date=2026-10-23");
+    if(!r.ok) throw 0;
+    const j = await r.json(), arr = Array.isArray(j)?j:[j], nw = {};
+    keys.forEach((k,n)=>{ const x = arr[n].daily; nw[k] = {}; x.time.forEach((t,i)=>{ if(x.weather_code[i]==null) return;
+      nw[k][t] = [x.weather_code[i],Math.round(x.temperature_2m_min[i]),Math.round(x.temperature_2m_max[i]),x.precipitation_probability_max[i],Math.round(x.wind_gusts_10m_max[i])]; }); });
+    Object.keys(nw).forEach(k=>{ WX[k] = Object.assign({}, WX[k], nw[k]); });
+    WX_WHEN = "hoje, "+new Date().toLocaleDateString("pt-BR",{day:"numeric",month:"long"});
+    renderWx();
+  }catch(e){ /* fica o instantâneo */ }
+}
+
 /* ---------- conteúdo ---------- */
 const content = document.getElementById("content");
 const rail = document.getElementById("rail");
@@ -748,10 +789,13 @@ DAYS.forEach(day=>{
   sec.innerHTML = `
     <div class="dayhead"><div class="num">${day.num}</div><div><h2>${day.title}</h2><p>${day.intro}</p></div></div>
     ${day.work?`<div class="note work"><h3>🚗 Na estrada em horário útil de Paris</h3><p>Horário do Reino Unido; Paris está 1h à frente (expediente 09:00–18:00 em Paris = 08:00–17:00 aqui).</p><ul>${day.work.map(x=>`<li>${x}</li>`).join("")}</ul></div>`:""}
+    ${WX_DAY[day.id]?`<div class="wx" data-day="${day.id}"></div>`:""}
     <ol class="stops">${stops}</ol>
     ${tide}`;
   content.appendChild(sec);
 });
+
+renderWx(); liveWx();
 
 /* visão geral: reservas, carro, mala */
 const ov = document.createElement("section");
