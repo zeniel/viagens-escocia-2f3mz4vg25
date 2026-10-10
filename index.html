@@ -172,7 +172,7 @@
   </div>
   <div class="legend">
     <span><b>Voos</b> Ryanair sex 16 22:10 → 23:20 · volta sex 23 18:40, Edimburgo</span>
-    <span><b>Carro</b> retirado dom 18 em Edimburgo, devolvido sex 23 no aeroporto de Edimburgo</span>
+    <span><b>Carro</b> retirado dom 18 e devolvido sex 23 no aeroporto de Edimburgo</span>
     <span><b>Conferência</b> qua 21 e qui 22, Glasshouse e Hilton, Gateshead</span>
     <span><b>Luz do dia</b> 07:50–18:00 · clique em qualquer parada para vê-la no mapa</span>
   </div>
@@ -213,17 +213,17 @@ const DAYS = [
   note:{h:"Sábado inteiro",items:["Como vocês chegam na sexta à noite, o sábado é todo de Edimburgo. Castelo com entrada das 12:30–13:00, comprada online."]}
  },
  {id:"dom18",label:"Dom 18",c:"var(--heather)",hex:"#7A5D8B",num:"18",title:"Nascer do sol, Rosslyn e os Borders",
-  intro:"Arthur's Seat ao amanhecer, mercado de Stockbridge, Dean Village, e o carro ao meio-dia. Rosslyn Chapel, a mansão gótica de Walter Scott e a noite num vilarejo dos Borders.",
+  intro:"Arthur's Seat ao amanhecer, mercado de Stockbridge, Dean Village, e o carro no aeroporto ao meio-dia. Rosslyn Chapel, a mansão gótica de Walter Scott e a noite num vilarejo dos Borders.",
   stops:[
    {t:"07:00",n:"Arthur's Seat",b:"Vulcão extinto no meio da cidade, 45 minutos de subida; o sol nasce às 07:55 e a essa hora é só de vocês.",lat:55.9441,lon:-3.1618,wiki:"Arthur's_Seat"},
    {t:"09:30",n:"Stockbridge e Dean Village",b:"Café em Stockbridge, mercado de domingo a partir das 10, e Dean Village a dez minutos a pé: vila de moinhos escondida no vale do Water of Leith.",lat:55.9522,lon:-3.2196,wiki:"Dean_Village"},
-   {t:"11:45",n:"Retirar o carro",b:"Automático, ida e volta em Edimburgo (devolução sex 23 no aeroporto, sem taxa one-way). Enterprise na estação Waverley abre aos domingos 07:00–22:00; a Hertz de Haymarket talvez feche no domingo.",lat:55.9458,lon:-3.2185,wiki:"Haymarket,_Edinburgh"},
+   {t:"11:45",n:"Retirar o carro no aeroporto",b:"Saiam de Dean Village até 11:00 com as malas: 15 min a pé até Haymarket e o tram até o aeroporto (~20 min, £7,50, a cada 7 min). As locadoras ficam no Car Rental Centre, abertas no domingo. Automático, retirada e devolução no mesmo lugar, sem taxa one-way.",lat:55.9480,lon:-3.3640,wiki:"Edinburgh_Trams"},
    {t:"12:30",n:"Rosslyn Chapel",b:"Capela de 1446 coberta de símbolos e lendas, o Pilar do Aprendiz, os Green Men, o Código Da Vinci. Abre ao meio-dia aos domingos; ingresso online.",lat:55.8554,lon:-3.1599,wiki:"Rosslyn_Chapel"},
    {t:"14:15",n:"Abbotsford House",b:"A casa que Walter Scott construiu como um castelo de romance gótico: armaria, biblioteca de nove mil volumes, jardins e a trilha de folclore Witch Corner. Aberta até 17:00 em outubro, última entrada 16:00.",lat:55.6000,lon:-2.7820,wiki:"Abbotsford,_Scottish_Borders"},
    {t:"16:30",n:"Melrose",b:"Check-in no vilarejo de dois mil habitantes aos pés dos Eildon Hills. Abadia por fora ao entardecer ou subida curta no Eildon North.",lat:55.5990,lon:-2.7270,wiki:"Melrose,_Scottish_Borders"},
    {t:"Noite",n:"Noite em Melrose",b:"Pubs com lareira e silêncio. Airbnb em Melrose, Gattonside (do outro lado da ponte pênsil) ou St Boswells.",lat:55.5995,lon:-2.7240,wiki:"Eildon_Hills",sleep:true}
   ],
-  note:{h:"Estrada do dia",items:["Edimburgo → Rosslyn pela A701 (25 min) → Abbotsford pela A7 e A6091 (55 min) → Melrose (5 min). Cerca de 1h30 de volante."]}
+  note:{h:"Estrada do dia",items:["Aeroporto → Rosslyn pela A720, o anel viário (30 min) → Abbotsford pela A7 e A6091 (55 min) → Melrose (5 min). Cerca de 1h30 de volante."]}
  },
  {id:"seg19",label:"Seg 19",c:"var(--sea)",hex:"#2E6E8E",num:"19",title:"Abadias, a fronteira e a ilha que fecha",
   intro:"As abadias do Tweed, o mirante de Walter Scott, a travessia para a Inglaterra em Coldstream e, à tarde, a estrada que o mar cobre até Holy Island. Às 20:10 a maré fecha a estrada e vocês ficam na ilha.",
@@ -298,7 +298,7 @@ const BOOK = [
  "Edimburgo Old Town, sex 16 e sáb 17 (self check-in)",
  "Melrose, dom 18",
  "Newcastle Quayside, ter 20 a sex 23",
- "Carro automático, Edimburgo dom 18 → aeroporto de Edimburgo sex 23",
+ "Carro automático no aeroporto de Edimburgo: retirada dom 18 ~11:45, devolução sex 23 até 16:15",
  "Castelo de Edimburgo, sáb · Real Mary King's Close, sáb 19:00 · The Witchery",
  "Rosslyn Chapel, dom 12:30 · Abbotsford · Victoria Tunnel, qui"
 ];
@@ -377,7 +377,7 @@ const STAYS = [
 "beds": "Cama de casal",
 "dist": "~1380 m da Royal Mile",
 "self": true,
-"note": "Perto de Haymarket: prático para pegar o carro no domingo.",
+"note": "Perto de Haymarket: tram direto para o aeroporto, onde vocês pegam o carro no domingo.",
 "tag": "",
 "imgs": [
 "https://a0.muscache.com/im/pictures/hosting/Hosting-10429306/original/d36d0518-1a12-454a-80b2-928714e93702.jpeg?im_w=720",
@@ -726,7 +726,7 @@ ov.innerHTML = `
       <li>Mão inglesa: automático, para não trocar marcha com a esquerda enquanto reaprende a rotatória.</li>
       <li>Velocidade em mph; a A1 vira pista simples em Northumberland; muros de pedra e ovelhas nas estradas dos Borders.</li>
       <li>Em Newcastle o carro fica num estacionamento de terça a sexta (veja se o Airbnb tem vaga); tudo na cidade é a pé, Metro ou trem.</li>
-      <li>Retirada e devolução em Edimburgo: sem taxa one-way. Na sexta, devolva até 16:00 para o voo das 18:40.</li>
+      <li>Retirada e devolução no aeroporto de Edimburgo: sem taxa one-way, e na sexta é só devolver e embarcar. Devolva até 16:15 para o voo das 18:40.</li>
     </ul></div>
     <div class="card"><h3>Clima e mala</h3><ul>
       <li>Máximas de 11 a 13 °C, mínimas de 4 a 7 °C; geada possível em Melrose e na ilha.</li>
