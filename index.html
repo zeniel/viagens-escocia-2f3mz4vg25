@@ -114,6 +114,25 @@
   .card li{margin:4px 0}
   .check li{list-style:none;position:relative;padding-left:26px}
   .check li::before{content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border:1.5px solid var(--basalt);border-radius:3px}
+  .stays{margin:0 0 34px}
+  .stays>p.lead{color:var(--basalt);max-width:62ch;margin:6px 0 0}
+  .night{margin-top:26px}
+  .night h3{font-size:24px}
+  .night h3 span{font:600 13px var(--sans);color:var(--mist);letter-spacing:.04em;text-transform:uppercase;margin-right:8px}
+  .night>p{margin:4px 0 12px;font-size:15px;color:var(--basalt);max-width:62ch}
+  .opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .opt{background:var(--paper);border:1px solid var(--fog-2);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+  .opt .pics{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;aspect-ratio:3/2;background:var(--fog-2);scrollbar-width:none}
+  .opt .pics img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start}
+  .opt .body{padding:10px 12px 12px;display:flex;flex-direction:column;gap:5px;flex:1}
+  .opt h4{margin:0;font:600 19px/1.15 var(--serif)}
+  .opt .tag{align-self:flex-start;font:600 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;background:var(--slate);color:var(--paper);padding:2px 7px;border-radius:3px}
+  .opt .meta{font-size:14px;color:var(--mist);font-variant-numeric:tabular-nums}
+  .opt .meta b{color:var(--slate)}
+  .opt .bed{font-size:14px;font-weight:600;color:var(--moss)}
+  .opt .note{font-size:14px;color:var(--basalt);margin:0}
+  .opt .go{margin-top:auto;align-self:flex-start;font:600 14px var(--sans);color:var(--sea);text-decoration:none;border-bottom:1px solid currentColor;padding-top:4px}
+  .opt .hint{font-size:12px;color:var(--mist)}
   .kbd{font:600 13px var(--sans);color:var(--mist);margin-top:18px}
   .kbd kbd{border:1px solid var(--stone);border-radius:4px;padding:0 6px;font:inherit;background:var(--paper)}
   footer{padding:24px clamp(20px,5vw,72px) 40px;font-size:14px;color:var(--mist);border-top:1px solid var(--fog-2)}
@@ -139,10 +158,11 @@
 <header class="hero">
   <div>
     <h1>Entre a névoa e a maré</h1>
-    <p>Edimburgo, os Borders de Walter Scott, uma noite ilhada em Lindisfarne, a costa de Bamburgh e Dunstanburgh, Newcastle, a Muralha de Adriano e um vilarejo romano a meia hora do avião. Sete dias, 17 a 24 de outubro de 2026.</p>
+    <p>Edimburgo, os Borders de Walter Scott, uma noite ilhada em Lindisfarne, a costa de Bamburgh e Dunstanburgh, Newcastle e a Muralha de Adriano no caminho de volta. Uma semana, 16 a 23 de outubro de 2026.</p>
   </div>
   <div class="legend">
-    <span><b>Carro</b> retirado dom 18 em Haymarket, devolvido sáb 24 no aeroporto de Newcastle</span>
+    <span><b>Voos</b> Ryanair sex 16 22:10 → 23:20 · volta sex 23 18:40, Edimburgo</span>
+    <span><b>Carro</b> retirado dom 18 em Edimburgo, devolvido sex 23 no aeroporto de Edimburgo</span>
     <span><b>Conferência</b> qua 21 e qui 22, Glasshouse e Hilton, Gateshead</span>
     <span><b>Luz do dia</b> 07:50–18:00 · clique em qualquer parada para vê-la no mapa</span>
   </div>
@@ -162,6 +182,13 @@
 <script>
 /* ---------- dados ---------- */
 const DAYS = [
+ {id:"sex16",label:"Sex 16",c:"var(--basalt)",hex:"#36454D",num:"16",title:"Chegada à noite",
+  intro:"Voo Ryanair FR2377 de Berlim às 22:10, pouso em Edimburgo às 23:20. Só chegar e dormir na Old Town.",
+  stops:[
+   {t:"23:20",n:"Aeroporto de Edimburgo",b:"Ônibus Airlink 100 (24h, sai a cada 10–30 min, ~30 min até Waverley) ou táxi (~25 min, ~£30). O tram para por volta da meia-noite.",lat:55.9500,lon:-3.3725,wiki:"Edinburgh_Airport"},
+   {t:"~00:15",n:"Old Town",b:"Check-in no Airbnb: self check-in, ou chegada tarde combinada antes com o anfitrião.",lat:55.9500,lon:-3.1890,wiki:"Old_Town,_Edinburgh",sleep:true}
+  ]
+ },
  {id:"sab17",label:"Sáb 17",c:"var(--slate)",hex:"#17232B",num:"17",title:"Edimburgo, a cidade de pedra",
   intro:"Chegada e um dia inteiro a pé na Old Town: o castelo, os becos, o cemitério dos Covenanters e, à noite, as ruas enterradas sob a prefeitura. Dormir na Old Town.",
   stops:[
@@ -173,14 +200,14 @@ const DAYS = [
    {t:"19:00",n:"The Real Mary King's Close",b:"Ruas do século XVII enterradas sob a prefeitura, histórias de peste e abandono. Reserve o horário online.",lat:55.9499,lon:-3.1906,wiki:"Mary_King's_Close"},
    {t:"20:30",n:"Jantar gótico",b:"The Witchery by the Castle, velas e madeira escura (reserve). City of the Dead ghost tour depois, se sobrar fôlego.",lat:55.9490,lon:-3.1962,wiki:"The_Witchery_by_the_Castle",sleep:true}
   ],
-  note:{h:"Chegando no sábado",items:["Aos sábados o easyJet Berlim–Edimburgo costuma sair às 14:45, chegando ~16:00: aí o castelo vai para domingo de manhã e o sábado começa no Grassmarket.","Se der para voar na sexta à noite (easyJet 18:10 ou Ryanair 22:10), o sábado fica inteiro."]}
+  note:{h:"Sábado inteiro",items:["Como vocês chegam na sexta à noite, o sábado é todo de Edimburgo: castelo cedo, antes das filas."]}
  },
  {id:"dom18",label:"Dom 18",c:"var(--heather)",hex:"#7A5D8B",num:"18",title:"Nascer do sol, Rosslyn e os Borders",
   intro:"Arthur's Seat ao amanhecer, mercado de Stockbridge, Dean Village, e o carro ao meio-dia. Rosslyn Chapel, a mansão gótica de Walter Scott e a noite num vilarejo dos Borders.",
   stops:[
    {t:"07:00",n:"Arthur's Seat",b:"Vulcão extinto no meio da cidade, 45 minutos de subida; o sol nasce às 07:55 e a essa hora é só de vocês.",lat:55.9441,lon:-3.1618,wiki:"Arthur's_Seat"},
    {t:"09:30",n:"Stockbridge e Dean Village",b:"Café em Stockbridge, mercado de domingo a partir das 10, e Dean Village a dez minutos a pé: vila de moinhos escondida no vale do Water of Leith.",lat:55.9522,lon:-3.2196,wiki:"Dean_Village"},
-   {t:"11:45",n:"Retirar o carro em Haymarket",b:"Automático, one-way até o aeroporto de Newcastle. Confirme o horário de domingo da agência; se fechar, o aeroporto fica a 25 min de tram.",lat:55.9458,lon:-3.2185,wiki:"Haymarket,_Edinburgh"},
+   {t:"11:45",n:"Retirar o carro",b:"Automático, ida e volta em Edimburgo (devolução sex 23 no aeroporto, sem taxa one-way). Enterprise na estação Waverley abre aos domingos 07:00–22:00; a Hertz de Haymarket talvez feche no domingo.",lat:55.9458,lon:-3.2185,wiki:"Haymarket,_Edinburgh"},
    {t:"12:30",n:"Rosslyn Chapel",b:"Capela de 1446 coberta de símbolos e lendas, o Pilar do Aprendiz, os Green Men, o Código Da Vinci. Abre ao meio-dia aos domingos; ingresso online.",lat:55.8554,lon:-3.1599,wiki:"Rosslyn_Chapel"},
    {t:"14:15",n:"Abbotsford House",b:"A casa que Walter Scott construiu como um castelo de romance gótico: armaria, biblioteca de nove mil volumes, jardins e a trilha de folclore Witch Corner. Aberta até 17:00 em outubro, última entrada 16:00.",lat:55.6000,lon:-2.7820,wiki:"Abbotsford,_Scottish_Borders"},
    {t:"16:30",n:"Melrose",b:"Check-in no vilarejo de dois mil habitantes aos pés dos Eildon Hills. Abadia por fora ao entardecer ou subida curta no Eildon North.",lat:55.5990,lon:-2.7270,wiki:"Melrose,_Scottish_Borders"},
@@ -214,7 +241,7 @@ const DAYS = [
    {t:"12:00",n:"Craster e Dunstanburgh Castle",b:"Dois quilômetros de costa a pé do vilarejo até as ruínas góticas no penhasco. Kippers defumados na volta, no galpão de 1856.",lat:55.4909,lon:-1.5940,wiki:"Dunstanburgh_Castle"},
    {t:"14:30",n:"Alnwick",b:"Barter Books, a livraria de segunda mão dentro da antiga estação, com lareiras e trem de brinquedo; o castelo dos duques de Northumberland (Harry Potter, Downton) ao lado.",lat:55.4155,lon:-1.7059,wiki:"Alnwick_Castle"},
    {t:"16:00",n:"Warkworth Castle",b:"Castelo dos Percy e vila medieval numa única rua dentro de um meandro do Coquet. Quieto; pule se estiver atrasado.",lat:55.3445,lon:-1.6117,wiki:"Warkworth_Castle"},
-   {t:"17:30",n:"Newcastle, check-in",b:"Hilton Newcastle Tyne Bridge (em cima do Glasshouse) ou Airbnb no Quayside, três noites. A conferência é amanhã.",lat:54.9664,lon:-1.6058,wiki:"Tyne_Bridge",sleep:true}
+   {t:"17:30",n:"Newcastle, check-in",b:"Airbnb no Quayside, entre o Hilton e a Glasshouse, três noites (veja Onde dormir, abaixo). A conferência é amanhã.",lat:54.9664,lon:-1.6058,wiki:"Tyne_Bridge",sleep:true}
   ],
   note:{h:"Estrada do dia",items:["Holy Island → Bamburgh 25 min → Craster 25 min → Alnwick 20 min → Warkworth 15 min → Newcastle 45 min pela A1. Cerca de 2h15 de volante."]}
  },
@@ -237,36 +264,367 @@ const DAYS = [
    {t:"20:00",n:"Jantar no Quayside",b:"Juntos, com o rio e as pontes iluminadas.",lat:54.9700,lon:-1.6030,wiki:"Quayside",sleep:true}
   ]
  },
- {id:"sex23",label:"Sex 23",c:"var(--rust)",hex:"#A8542F",num:"23",title:"A Muralha de Adriano",
-  intro:"Checkout e a Military Road, reta por cima da muralha. Chesters, Housesteads, a caminhada por Steel Rigg e Vindolanda. Noite em Corbridge, o vilarejo romano a meia hora do aeroporto.",
+ {id:"sex23",label:"Sex 23",c:"var(--rust)",hex:"#A8542F",num:"23",title:"A Muralha e o voo",
+  intro:"Checkout cedo, a Muralha de Adriano no trecho mais bonito, e a A68 pelos Borders até o aeroporto de Edimburgo. Carro devolvido até 16:00, voo às 18:40.",
   stops:[
-   {t:"10:00",n:"Military Road (B6318)",b:"Uma hora de Newcastle pela estrada construída em 1750 em cima da própria muralha. Para quem gosta de dirigir.",lat:55.0130,lon:-1.9000,wiki:"B6318_road"},
-   {t:"10:45",n:"Chesters Roman Fort",b:"Forte de cavalaria à beira do North Tyne, com a casa de banho militar mais bem preservada da Grã-Bretanha.",lat:55.0265,lon:-2.1392,wiki:"Chesters_Roman_Fort"},
-   {t:"12:00",n:"Housesteads",b:"O forte mais completo da muralha, no alto do Whin Sill; latrinas, celeiros, hospital. Café no Sill antes.",lat:55.0132,lon:-2.3313,wiki:"Housesteads_Roman_Fort"},
-   {t:"13:30",n:"Steel Rigg e Sycamore Gap",b:"O trecho mais dramático a pé, sobre os penhascos, ~1h30 ida e volta. A árvore famosa foi derrubada em 2023; o vão e o muro continuam.",lat:54.9975,lon:-2.3875,wiki:"Sycamore_Gap_tree"},
-   {t:"15:00",n:"Vindolanda",b:"Escavação ativa e o melhor museu do norte: as tábuas de madeira com cartas romanas, sapatos, um convite de aniversário de 1.900 anos.",lat:54.9912,lon:-2.3608,wiki:"Vindolanda"},
-   {t:"17:30",n:"Noite em Corbridge",b:"Vilarejo de pedra com ruínas de cidade romana e bons pubs, 30 min do aeroporto. Alternativa: Blanchland e o bar na cripta do Lord Crewe Arms, a 1h.",lat:54.9742,lon:-2.0177,wiki:"Corbridge",sleep:true}
+   {t:"08:30",n:"Checkout em Newcastle",b:"Uma hora até Housesteads pela Military Road (B6318), a estrada de 1750 construída em cima da própria muralha.",lat:55.0130,lon:-1.9000,wiki:"B6318_road"},
+   {t:"10:00",n:"Housesteads",b:"O forte mais completo da muralha, no alto do Whin Sill; latrinas, celeiros, hospital. Abre às 10.",lat:55.0132,lon:-2.3313,wiki:"Housesteads_Roman_Fort"},
+   {t:"11:15",n:"Steel Rigg e Sycamore Gap",b:"O trecho mais dramático a pé, sobre os penhascos; ida e volta de ~1h até o vão onde ficava a árvore, derrubada em 2023.",lat:54.9975,lon:-2.3875,wiki:"Sycamore_Gap_tree"},
+   {t:"12:45",n:"Pela A68 até Edimburgo",b:"Pouco mais de 2h pela A68, cruzando Carter Bar, a fronteira no alto das colinas. Almoço rápido em Jedburgh se der tempo.",lat:55.3570,lon:-2.4730,wiki:"Carter_Bar"},
+   {t:"até 16:00",n:"Aeroporto de Edimburgo",b:"Devolver o carro e embarcar: Ryanair FR2376 às 18:40, chegada em Berlim às 21:45.",lat:55.9500,lon:-3.3725,wiki:"Edinburgh_Airport",sleep:true}
   ],
-  note:{h:"Estrada do dia",items:["Newcastle → Chesters 40 min → Housesteads 20 min → Steel Rigg 10 min → Vindolanda 10 min → Corbridge 35 min. Cerca de 2h de volante."]}
- },
- {id:"sab24",label:"Sáb 24",c:"var(--stone)",hex:"#8B8F8C",num:"24",title:"Voo de volta",
-  intro:"Café em Corbridge, 30 minutos até o aeroporto, devolução do carro e o voo. Não há direto para Berlim no sábado; a conexão da KLM por Amsterdã é a saída limpa.",
-  stops:[
-   {t:"~11:30",n:"Aeroporto de Newcastle",b:"KLM Newcastle–Amsterdã–Berlim (saída do começo da tarde, ~13:55), um bilhete só. Plano B: Eurowings direto no domingo 25 às 19:55, com um dia a mais.",lat:55.0375,lon:-1.6917,wiki:"Newcastle_International_Airport",sleep:true}
-  ]
+  note:{h:"Estrada do dia",items:["Newcastle → Housesteads 1h → Steel Rigg 10 min → aeroporto de Edimburgo ~2h15 pela A68. Cerca de 3h30 de volante: saia de Steel Rigg até 13:00."]}
  }
 ];
 
 const BOOK = [
- "Pousada em Holy Island, seg 19 (define o roteiro; peça 1 noite mesmo com mínimo maior)",
- "Airbnb em Melrose / Gattonside / St Boswells, dom 18",
- "Hilton Newcastle Tyne Bridge (tarifa de membro) ou Airbnb Quayside, ter 20 a sex 23",
- "Airbnb em Corbridge, sex 23",
- "Airbnb na Old Town de Edimburgo, sáb 17 (e sex 16, se voarem na sexta)",
- "Carro automático, Haymarket dom 18 → aeroporto de Newcastle sáb 24, one-way",
- "Voos: BER–EDI (easyJet sáb 14:45 ou sex à noite) e NCL–AMS–BER (KLM sáb) ou NCL–BER (Eurowings dom)",
- "Castelo de Edimburgo, sáb 12:30 · Real Mary King's Close, sáb 19:00 · The Witchery",
+ "✓ Voos Ryanair: BER→EDI sex 16 22:10 · EDI→BER sex 23 18:40",
+ "Holy Island, seg 19: Manor House Hotel (último quarto no Booking)",
+ "Edimburgo Old Town, sex 16 e sáb 17 (self check-in)",
+ "Melrose, dom 18",
+ "Newcastle Quayside, ter 20 a sex 23",
+ "Carro automático, Edimburgo dom 18 → aeroporto de Edimburgo sex 23",
+ "Castelo de Edimburgo, sáb · Real Mary King's Close, sáb 19:00 · The Witchery",
  "Rosslyn Chapel, dom 12:30 · Abbotsford · Victoria Tunnel, qui"
+];
+
+const STAYS = [
+{
+"night": "Sex 16 e sáb 17",
+"place": "Edimburgo, Old Town",
+"n": 2,
+"why": "Vocês chegam às 23:20: prefiram self check-in, ou combinem a chegada tarde com o anfitrião antes de reservar. Do aeroporto, ônibus Airlink 100 (24h, ~30 min) ou táxi.",
+"opts": [
+{
+"name": "A Wee Retreat, Cockburn Street",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/1292743386619136121?check_in=2026-10-16&check_out=2026-10-18&adults=2",
+"rating": "4,97 (144)",
+"total": 342,
+"nights": 2,
+"beds": "Cama king",
+"dist": "~170 m da Royal Mile",
+"self": false,
+"note": "No coração da Old Town, a dois minutos da Royal Mile. Sem self check-in: confirme a chegada às 23:30.",
+"tag": "Melhor localização",
+"imgs": [
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1292743386619136121/original/57bd38dc-9c56-49f9-a6ec-a1f1bfa0ac2e.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1292743386619136121/original/a89c4775-09f5-4dcf-a396-7dd92c4f2d47.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1292743386619136121/original/5fd223ac-1cf5-4ac5-9be5-81edd47d0c3e.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1292743386619136121/original/afcdea07-b607-4e5c-a5e1-f3df07adf128.jpeg?im_w=720"
+]
+},
+{
+"name": "Historic Edinburgh hideaway",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/625120745805305966?check_in=2026-10-16&check_out=2026-10-18&adults=2",
+"rating": "4,78 (328)",
+"total": 294,
+"nights": 2,
+"beds": "Cama de casal + sofá-cama de casal na sala",
+"dist": "~590 m da Royal Mile",
+"self": true,
+"note": "Prédio histórico perto do Grassmarket e do castelo.",
+"tag": "",
+"imgs": [
+"https://a0.muscache.com/im/pictures/miso/Hosting-625120745805305966/original/54e1c860-a9d6-4ba2-b441-408946a45c68.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-625120745805305966/original/f3a33292-87f0-43cc-921e-291957aafbc0.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-625120745805305966/original/a705ec67-a652-4d5a-8e99-7e8b8745a4f8.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-625120745805305966/original/a4c8a689-ea58-4fc0-9f88-735b9db25d76.jpeg?im_w=720"
+]
+},
+{
+"name": "Stylish Row House Retreat",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/1305676346119922926?check_in=2026-10-16&check_out=2026-10-18&adults=2",
+"rating": "4,92 (26)",
+"total": 225,
+"nights": 2,
+"beds": "Cama de casal",
+"dist": "~1280 m da Royal Mile",
+"self": true,
+"note": "O mais barato; a 15 min a pé da Royal Mile, perto de Bruntsfield.",
+"tag": "",
+"imgs": [
+"https://a0.muscache.com/im/pictures/miso/Hosting-1305676346119922926/original/4a958c6c-640e-4fce-a834-1a673f913e87.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-1305676346119922926/original/3cbf2eea-0946-424d-aaa5-5192a8f5d61f.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-1305676346119922926/original/498b936b-57af-40a7-9691-5ed350990718.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-1305676346119922926/original/e407a5fb-55a9-4a7a-942e-14203e26c92f.jpeg?im_w=720"
+]
+},
+{
+"name": "Fountainbridge Central Apartment",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/10429306?check_in=2026-10-16&check_out=2026-10-18&adults=2",
+"rating": "4,72 (288)",
+"total": 255,
+"nights": 2,
+"beds": "Cama de casal",
+"dist": "~1380 m da Royal Mile",
+"self": true,
+"note": "Perto de Haymarket: prático para pegar o carro no domingo.",
+"tag": "",
+"imgs": [
+"https://a0.muscache.com/im/pictures/hosting/Hosting-10429306/original/d36d0518-1a12-454a-80b2-928714e93702.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-10429306/original/9d296cac-8f33-4675-aee3-a35327109b4c.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-10429306/original/6743ba88-bf10-48bb-85f7-3dea48cffb9d.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-10429306/original/d6ff896e-67d7-4ba1-aff5-a252dde67104.jpeg?im_w=720"
+]
+}
+]
+},
+{
+"night": "Dom 18",
+"place": "Melrose e Gattonside",
+"n": 1,
+"why": "Todas com self check-in. Várias têm dois quartos, cada um dorme no seu.",
+"opts": [
+{
+"name": "The Clyde",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/687515424770323624?check_in=2026-10-18&check_out=2026-10-19&adults=2",
+"rating": "4,92 (37)",
+"total": 140,
+"nights": 1,
+"beds": "2 quartos: cama king + cama de solteiro",
+"dist": "~130 m do centro de Melrose",
+"self": true,
+"note": "Na praça de Melrose, a pé da abadia e dos pubs.",
+"tag": "Recomendado",
+"imgs": [
+"https://a0.muscache.com/im/pictures/miso/Hosting-687515424770323624/original/e410c09a-fd7e-4bca-afef-8945ea5ae2e8.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-687515424770323624/original/4b910670-eb0d-4888-9267-b69c3935e5cf.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-687515424770323624/original/b8b79528-8950-4125-910f-b82850f16dc4.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-687515424770323624/original/c19e9728-51f9-4082-bc89-96389c29f02b.jpeg?im_w=720"
+]
+},
+{
+"name": "The Tweed",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/47330025?check_in=2026-10-18&check_out=2026-10-19&adults=2",
+"rating": "4,84 (79)",
+"total": 144,
+"nights": 1,
+"beds": "2 quartos: cama de casal + cama de solteiro",
+"dist": "~160 m do centro de Melrose",
+"self": true,
+"note": "Mesmo prédio/rua do Clyde, centro de Melrose.",
+"tag": "",
+"imgs": [
+"https://a0.muscache.com/im/pictures/hosting/Hosting-47330025/original/53fe39bb-7611-415b-bd26-3edcdb858ed0.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-47330025/original/862a17ff-5864-4d0c-91bd-0b1299cdbd4e.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-47330025/original/8b70c4d4-ba00-4bed-9cdd-10e6ced27b1d.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/5f5a85e1-e6ac-42cc-abdd-a32f70e80065.jpg?im_w=720"
+]
+},
+{
+"name": "Pergola Cottage, Gattonside",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/46086448?check_in=2026-10-18&check_out=2026-10-19&adults=2",
+"rating": "4,87 (46)",
+"total": 114,
+"nights": 1,
+"beds": "2 quartos: cama king + cama de solteiro",
+"dist": "~1170 m do centro de Melrose",
+"self": true,
+"note": "Chalé do outro lado da ponte pênsil sobre o Tweed; o mais barato.",
+"tag": "",
+"imgs": [
+"https://a0.muscache.com/im/pictures/hosting/Hosting-46086448/original/4dfc69f4-c598-41be-b774-00e5c2555d63.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-46086448/original/476f8673-0789-4701-bfe6-6346bcb41ea6.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-46086448/original/266b13d1-fe39-4713-a270-93fcf1fc279f.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NDYwODY0NDg%3D/original/a5f8f9d5-fafe-4a32-9bbb-a1a1b13cbe02.jpeg?im_w=720"
+]
+},
+{
+"name": "The Spey",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/1758546049153273104?check_in=2026-10-18&check_out=2026-10-19&adults=2",
+"rating": "novo",
+"total": 135,
+"nights": 1,
+"beds": "Cama king",
+"dist": "~80 m do centro de Melrose",
+"self": true,
+"note": "Novo no Airbnb, centro de Melrose.",
+"tag": "",
+"imgs": [
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1758546049153273104/original/75659e6c-2d27-4a44-9701-935e551be36e.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1758546049153273104/original/c1fc3f56-aee2-4da6-ac3e-d4b2337a6b5a.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1758546049153273104/original/b785cede-6101-4dfb-84fd-bd8bd3174b6c.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1758546049153273104/original/3f4160ac-bb48-4cf4-b1ad-e793d73d8e0f.jpeg?im_w=720"
+]
+}
+]
+},
+{
+"night": "Seg 19",
+"place": "Holy Island",
+"n": 1,
+"why": "No Airbnb não há nada livre na ilha nessa noite. O Manor House é o único quarto que encontrei na ilha, e o Booking marcava o último nesse preço: reserve primeiro. Se perder, durma em Beal ou Belford e visite a ilha entre 11:10 e 19:40.",
+"opts": [
+{
+"name": "Manor House Hotel, Holy Island",
+"src": "Booking.com",
+"url": "https://www.booking.com/hotel/gb/manor-house-berwick-upon-tweed.en-gb.html?checkin=2026-10-19&checkout=2026-10-20&group_adults=2&no_rooms=1&selected_currency=GBP",
+"rating": "8,1 / 10",
+"total": 185,
+"nights": 1,
+"beds": "Quarto duplo, cama de casal (há também quartos twin, com 2 camas de solteiro)",
+"dist": "Na ilha, ao lado do priorado",
+"self": null,
+"note": "Café da manhã incluído. Último quarto nesse preço quando olhei. Tel. 01289 389207.",
+"tag": "Reservar já",
+"imgs": [
+"https://cf.bstatic.com/xdata/images/hotel/max500/275595831.jpg?k=27db87a16102dd73ed69c8a66fe04b6c8bca34bfa42b140fee12a4ff6043e67f",
+"https://cf.bstatic.com/xdata/images/hotel/max500/275595367.jpg?k=21e8b54e2e1c79d43ce8acb54a8de34e58b4fc748c371c9e0d5d5f2d5255f5f0",
+"https://cf.bstatic.com/xdata/images/hotel/max500/275595370.jpg?k=b6d06dc8dfe16675678671ce92b9ce59330e2b23e2a3b7adfddfacf46315c4b4",
+"https://cf.bstatic.com/xdata/images/hotel/max500/275595373.jpg?k=9169e1e24454bfbb71dfcb345acbf2cf5d2101dc24660cbd7ab490caa8acf32e"
+]
+},
+{
+"name": "The Lindisfarne Inn, Beal",
+"src": "Booking.com",
+"url": "https://www.booking.com/hotel/gb/the-lindisfarne-inn.en-gb.html?checkin=2026-10-19&checkout=2026-10-20&group_adults=2&no_rooms=1&selected_currency=GBP",
+"rating": "8,5 / 10",
+"total": 109,
+"nights": 1,
+"beds": "Quarto duplo ou twin: cama de casal extra grande ou 2 de solteiro",
+"dist": "No continente, 5 min do causeway",
+"self": null,
+"note": "Café incluído e cancelamento grátis. Plano B se a ilha estiver cheia.",
+"tag": "",
+"imgs": [
+"https://cf.bstatic.com/xdata/images/hotel/max500/473414384.jpg?k=264afa77ca8d456cdc5f718eb77c51da7b4d4b2b294c37611de5b070356bd302",
+"https://cf.bstatic.com/xdata/images/hotel/max500/488089290.jpg?k=a38f6d1d410150120601341aaa58381bb724dcdecf4072b5ccdd5c6a90e8c602",
+"https://cf.bstatic.com/xdata/images/hotel/max500/488089183.jpg?k=ecb32a9d5a8a5a4e3cd72e3e26c61b4c52aee624704de1aeb2ca52ef5613ed01",
+"https://cf.bstatic.com/xdata/images/hotel/max500/488089213.jpg?k=dd1fc01d64575872a497ac7c7da9a65284d16026c04590d16d0bc04416613d69"
+]
+},
+{
+"name": "Blue Bell Hotel, Belford",
+"src": "Booking.com",
+"url": "https://www.booking.com/hotel/gb/blue-bell-belford.en-gb.html?checkin=2026-10-19&checkout=2026-10-20&group_adults=2&no_rooms=1&selected_currency=GBP",
+"rating": "7,2 / 10",
+"total": 75,
+"nights": 1,
+"beds": "Quarto twin: 2 camas de solteiro",
+"dist": "Belford, 15 min do causeway",
+"self": null,
+"note": "O mais barato, com café e cancelamento grátis.",
+"tag": "",
+"imgs": [
+"https://cf.bstatic.com/xdata/images/hotel/max500/807581714.jpg?k=b6bee693dc9a80a58854fa4fae906b25bcff97c41cc212ad5a0e5fe02b8a26e0",
+"https://cf.bstatic.com/xdata/images/hotel/max500/132154341.jpg?k=6cffd847d3f3fa8125c641de293078e3eef370fb653f4fb99bfe90d71a1d5bb5",
+"https://cf.bstatic.com/xdata/images/hotel/max500/325423490.jpg?k=86adfbe8426ea0fe5dbfe3a7af35f28cbc6c8b80920d45ff78cae72dfd87dae4",
+"https://cf.bstatic.com/xdata/images/hotel/max500/325422733.jpg?k=3c6532d69688e0ef4b85adffcee1da25cf2440348d784b96e6a5c851c8b4f5e0"
+]
+}
+]
+},
+{
+"night": "Ter 20 a qui 22",
+"place": "Newcastle e Gateshead, entre o Hilton e a Glasshouse",
+"n": 3,
+"why": "O Hilton e a Glasshouse ficam a ~450 m um do outro, na margem de Gateshead. Os apartamentos ficam no Quayside, do outro lado do rio: a Millennium Bridge ou a Swing Bridge levam a pé até os dois. Distâncias em linha reta.",
+"opts": [
+{
+"name": "Studio no Quayside",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/49686821?check_in=2026-10-20&check_out=2026-10-23&adults=2",
+"rating": "4,98 (162)",
+"total": 322,
+"nights": 3,
+"beds": "Cama king + sofá-cama",
+"dist": "~510 m do Hilton · ~110 m da Glasshouse",
+"self": false,
+"note": "O mais perto dos dois: a Millennium Bridge leva direto à Glasshouse. Muito bem avaliado. Sem self check-in.",
+"tag": "Mais perto",
+"imgs": [
+"https://a0.muscache.com/im/pictures/8db544fc-d3c3-4e1b-8bd5-3fa9c7e23d60.jpg?im_w=720",
+"https://a0.muscache.com/im/pictures/41d383cd-d477-41c3-b8ac-08c93d5f63e4.jpg?im_w=720",
+"https://a0.muscache.com/im/pictures/48d5ba8f-179d-44a1-af1a-25a09fc5530f.jpg?im_w=720",
+"https://a0.muscache.com/im/pictures/15d8647b-dd86-4fe8-a12c-e6a4261fd041.jpg?im_w=720"
+]
+},
+{
+"name": "High Quay",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/36793454?check_in=2026-10-20&check_out=2026-10-23&adults=2",
+"rating": "4,9 (170)",
+"total": 395,
+"nights": 3,
+"beds": "2 quartos: cama queen + cama de casal",
+"dist": "~930 m do Hilton · ~550 m da Glasshouse",
+"self": true,
+"note": "Cada uma no seu quarto, vista para o rio. Self check-in.",
+"tag": "Dois quartos",
+"imgs": [
+"https://a0.muscache.com/im/pictures/ccbab6bc-6a8f-4e91-8630-cc24ecc5eb95.jpg?im_w=720",
+"https://a0.muscache.com/im/pictures/a481dd31-7c0e-4f21-95ae-45d6f2b1a49e.jpg?im_w=720",
+"https://a0.muscache.com/im/pictures/aea926a5-4631-45d2-a5e1-b2d6ead96964.jpg?im_w=720",
+"https://a0.muscache.com/im/pictures/a007015a-6241-420c-8c3a-832fc543f0f6.jpg?im_w=720"
+]
+},
+{
+"name": "Feel good flat",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/1511585853797429233?check_in=2026-10-20&check_out=2026-10-23&adults=2",
+"rating": "5,0 (25)",
+"total": 419,
+"nights": 3,
+"beds": "2 quartos: cama de casal + 2 camas de solteiro",
+"dist": "~750 m do Hilton · ~360 m da Glasshouse",
+"self": null,
+"note": "Avaliação perfeita, perto do Quayside.",
+"tag": "",
+"imgs": [
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1511585853797429233/original/572ef93e-a3f5-4e8f-86c5-6ba82eb5b68b.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1511585853797429233/original/71a968f1-1e27-47cf-8aa7-576a7a1dbb2b.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1511585853797429233/original/0635fb11-aee9-42fb-98e8-df9656e90bf7.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1511585853797429233/original/13d07cdb-3612-4ab9-a9aa-1394807eb093.jpeg?im_w=720"
+]
+},
+{
+"name": "Apartamento com vista do Quayside",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/1495632407719949453?check_in=2026-10-20&check_out=2026-10-23&adults=2",
+"rating": "5,0 (15)",
+"total": 423,
+"nights": 3,
+"beds": "2 quartos: cama de casal + cama de casal",
+"dist": "~950 m do Hilton · ~560 m da Glasshouse",
+"self": false,
+"note": "Vista para as pontes.",
+"tag": "",
+"imgs": [
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1495632407719949453/original/f93c6a49-61e7-4a34-88ee-fa59678592ee.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1495632407719949453/original/2d90e3f1-2fd4-41c8-97c0-d0a9f86c44bd.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1495632407719949453/original/5946ef34-836e-4638-a389-38d886196bfa.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1495632407719949453/original/3dd87912-e915-4c0a-906d-0d49eaf36400.jpeg?im_w=720"
+]
+},
+{
+"name": "30 Quayside",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/1196914754954923711?check_in=2026-10-20&check_out=2026-10-23&adults=2",
+"rating": "4,75 (48)",
+"total": 258,
+"nights": 3,
+"beds": "Cama de casal + sofá-cama",
+"dist": "~490 m do Hilton · ~860 m da Glasshouse",
+"self": true,
+"note": "O mais barato, ao lado da Swing Bridge.",
+"tag": "",
+"imgs": [
+"https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE5NjkxNDc1NDk1NDkyMzcxMQ%3D%3D/original/fd54e610-ad8b-492a-bd74-6d05e4a7fe01.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE5NjkxNDc1NDk1NDkyMzcxMQ%3D%3D/original/aea1c01c-dab7-455d-b6a1-1b2a45dc2f61.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE5NjkxNDc1NDk1NDkyMzcxMQ%3D%3D/original/9a699ae7-40e9-4815-9701-0e67d0c85366.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE5NjkxNDc1NDk1NDkyMzcxMQ%3D%3D/original/d7f5bce9-8826-41c0-95d4-50c870c70ac8.jpeg?im_w=720"
+]
+}
+]
+}
 ];
 
 /* ---------- mapa ---------- */
@@ -371,8 +729,8 @@ ov.innerHTML = `
     <div class="card"><h3>Carro e estrada</h3><ul>
       <li>Mão inglesa: automático, para não trocar marcha com a esquerda enquanto reaprende a rotatória.</li>
       <li>Velocidade em mph; a A1 vira pista simples em Northumberland; muros de pedra e ovelhas nas estradas dos Borders.</li>
-      <li>Em Newcastle o carro fica na garagem do hotel de terça a sexta; tudo na cidade é a pé, Metro ou trem.</li>
-      <li>One-way dentro do Reino Unido é rotina nas grandes locadoras (taxa de até £150).</li>
+      <li>Em Newcastle o carro fica num estacionamento de terça a sexta (veja se o Airbnb tem vaga); tudo na cidade é a pé, Metro ou trem.</li>
+      <li>Retirada e devolução em Edimburgo: sem taxa one-way. Na sexta, devolva até 16:00 para o voo das 18:40.</li>
     </ul></div>
     <div class="card"><h3>Clima e mala</h3><ul>
       <li>Máximas de 11 a 13 °C, mínimas de 4 a 7 °C; geada possível em Melrose e na ilha.</li>
@@ -389,6 +747,26 @@ ov.innerHTML = `
   </div>
   <p class="kbd"><kbd>←</kbd> <kbd>→</kbd> mudam o dia · clique numa parada para centralizar o mapa · clique num marcador para abrir a parada</p>`;
 content.appendChild(ov);
+
+/* onde dormir */
+const stays = document.createElement("section");
+stays.className = "overview stays";
+stays.innerHTML = `<h2>Onde dormir</h2><p class="lead">Opções que encontrei no Airbnb e no Booking.com em 10 de outubro, para as datas e para 2 pessoas, dentro de £100–160 por noite. Preços totais da estadia, com taxas. Disponibilidade e preço mudam rápido. Deslize as fotos para o lado.</p>` +
+  STAYS.map(n=>`<div class="night"><h3><span>${n.night} · ${n.n} noite${n.n>1?"s":""}</span>${n.place}</h3><p>${n.why}</p><div class="opts">${n.opts.map(o=>`
+    <article class="opt">
+      <div class="pics">${o.imgs.map(u=>`<img src="${u}" alt="" loading="lazy">`).join("")}</div>
+      <div class="body">
+        ${o.tag?`<span class="tag">${o.tag}</span>`:""}
+        <h4>${o.name}</h4>
+        <div class="meta"><b>£${o.total}</b> total · £${Math.round(o.total/o.nights)}/noite · ★ ${o.rating}</div>
+        <div class="bed">${o.beds}</div>
+        <div class="meta">${o.dist}${o.self===true?" · self check-in":""}</div>
+        <p class="note">${o.note}</p>
+        <a class="go" href="${o.url}" target="_blank" rel="noopener">Ver no ${o.src} ↗</a>
+      </div>
+    </article>`).join("")}</div></div>`).join("");
+content.insertBefore(stays, ov);
+
 
 /* ---------- navegação ---------- */
 function showDay(id, keepHash, noScroll){
