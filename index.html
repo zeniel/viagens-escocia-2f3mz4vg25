@@ -132,6 +132,13 @@
   .opt .bed{font-size:14px;font-weight:600;color:var(--moss)}
   .opt .note{font-size:14px;color:var(--basalt);margin:0}
   .opt .go{margin-top:auto;align-self:flex-start;font:600 14px var(--sans);color:var(--sea);text-decoration:none;border-bottom:1px solid currentColor;padding-top:4px}
+  .opt .links{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;padding-top:4px}
+  .opt .links .go{margin-top:0;padding-top:0}
+  .opt .onmap{font:600 14px var(--sans);color:var(--moss);background:none;border:0;padding:0;border-bottom:1px solid currentColor;cursor:pointer}
+  .opt .onmap:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+  .opt.picked{box-shadow:0 0 0 2px var(--moss)}
+  .pin.stay{background:#fff;color:var(--c);border:2px solid var(--c);font-size:15px;border-radius:6px}
+  .leaflet-popup-content .pop-go{display:inline-block;margin-top:4px;font-weight:600}
   .opt .hint{font-size:12px;color:var(--mist)}
   .kbd{font:600 13px var(--sans);color:var(--mist);margin-top:18px}
   .kbd kbd{border:1px solid var(--stone);border-radius:4px;padding:0 6px;font:inherit;background:var(--paper)}
@@ -734,8 +741,8 @@ content.appendChild(ov);
 const stays = document.createElement("section");
 stays.className = "overview stays";
 stays.innerHTML = `<h2>Onde dormir</h2><p class="lead">Opções do Airbnb (e, na ilha, hotel e pub) que encontrei em 10 de outubro, para as datas e para 2 pessoas, todas com cama de casal ou king. A faixa-alvo era £100–160 por noite. Preços totais da estadia, com taxas. Disponibilidade e preço mudam rápido. Deslize as fotos para o lado.</p>` +
-  STAYS.map(n=>`<div class="night"><h3><span>${n.night} · ${n.n} noite${n.n>1?"s":""}</span>${n.place}</h3><p>${n.why}</p><div class="opts">${n.opts.map(o=>`
-    <article class="opt">
+  STAYS.map((n,ni)=>`<div class="night"><h3><span>${n.night} · ${n.n} noite${n.n>1?"s":""}</span>${n.place}</h3><p>${n.why}</p><div class="opts">${n.opts.map((o,oi)=>`
+    <article class="opt" data-k="${ni}-${oi}">
       <div class="pics">${o.imgs.map(u=>`<img src="${u}" alt="" loading="lazy">`).join("")}</div>
       <div class="body">
         ${o.tag?`<span class="tag">${o.tag}</span>`:""}
@@ -744,10 +751,34 @@ stays.innerHTML = `<h2>Onde dormir</h2><p class="lead">Opções do Airbnb (e, na
         <div class="bed">${o.beds}</div>
         <div class="meta">${o.dist}${o.self===true?" · self check-in":""}</div>
         <p class="note">${o.note}</p>
-        <a class="go" href="${o.url}" target="_blank" rel="noopener">Ver no ${o.src} ↗</a>
+        <div class="links"><button class="onmap" type="button" data-k="${ni}-${oi}">📍 Ver no mapa</button><a class="go" href="${o.url}" target="_blank" rel="noopener">Ver no ${o.src} ↗</a></div>
       </div>
     </article>`).join("")}</div></div>`).join("");
 content.insertBefore(stays, ov);
+
+/* hospedagens no mapa */
+const STAY_POS = {"A Wee Retreat, Cockburn Street": [55.9507, -3.1892], "Historic Edinburgh hideaway": [55.94637, -3.19868], "Stylish Row House Retreat": [55.94246, -3.20731], "Fountainbridge Central Apartment": [55.9426, -3.2095], "The Spey": [55.5995, -2.72], "The Clyde": [55.5982, -2.7205], "The Tweed": [55.59868, -2.72151], "Pergola Cottage, Gattonside": [55.60692, -2.73129], "Couples Retreat near Holy Island": [55.6569, -1.8898], "Luxury Lodge, Haggerston Castle": [55.6866, -1.9346], "West Lawn 47, Haggerston Castle": [55.68771, -1.93583], "Cuddy's Rest, Belford": [55.5972, -1.8332], "Studio no Quayside": [54.9687, -1.5972], "Elegant Riverside Apartment": [54.96924, -1.60879], "Willow Heights": [54.9677, -1.612], "30 Quayside": [54.96674, -1.61162], "Prime Location Apartment": [54.96375, -1.60948], "Manor House Hotel": [55.6688, -1.801], "The Ship Inn": [55.6693, -1.7998]};
+const STAY_HEX = ["#17232B","#7A5D8B","#2E6E8E","#A8542F"];
+const stayLayer = L.layerGroup().addTo(map), stayMarkers = {};
+STAYS.forEach((n,ni)=>n.opts.forEach((o,oi)=>{
+  const p = STAY_POS[o.name]; if(!p) return;
+  const hex = STAY_HEX[ni % STAY_HEX.length];
+  const m = L.marker(p,{icon:L.divIcon({className:"",html:`<div class="pin stay" style="--c:${hex}">⌂</div>`,iconSize:[26,26],iconAnchor:[13,13],popupAnchor:[0,-12]}),title:o.name,zIndexOffset:-100});
+  m.bindPopup(`<b>${o.name}</b><br>${n.night} · ${o.total?`£${o.total} total`:"preço sob consulta"} · ${o.beds}<br><a class="pop-go" href="${o.url}" target="_blank" rel="noopener">Ver no ${o.src} ↗</a>`);
+  m.on("click",()=>pickStay(`${ni}-${oi}`,false));
+  m.addTo(stayLayer); stayMarkers[`${ni}-${oi}`]=m;
+}));
+function pickStay(k, fly){
+  const m = stayMarkers[k]; if(!m) return;
+  if(fly!==false) map.flyTo(m.getLatLng(), 15, {duration:.8});
+  m.openPopup();
+  document.querySelectorAll(".opt.picked").forEach(e=>e.classList.remove("picked"));
+  document.querySelector(`.opt[data-k="${k}"]`)?.classList.add("picked");
+}
+stays.addEventListener("click",e=>{
+  const b = e.target.closest(".onmap"); if(!b) return;
+  pickStay(b.dataset.k);
+});
 
 
 /* ---------- navegação ---------- */
