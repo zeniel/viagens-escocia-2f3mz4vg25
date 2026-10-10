@@ -193,10 +193,10 @@
 /* ---------- dados ---------- */
 const DAYS = [
  {id:"sex16",label:"Sex 16",c:"var(--basalt)",hex:"#36454D",num:"16",title:"Chegada à noite",
-  intro:"Voo Ryanair FR2377 de Berlim às 22:10, pouso em Edimburgo às 23:20. Só chegar e dormir na Old Town.",
+  intro:"Voo Ryanair FR2377 de Berlim às 22:10, pouso em Edimburgo às 23:20. Só chegar e dormir.",
   stops:[
    {t:"23:20",n:"Aeroporto de Edimburgo",b:"Ônibus Airlink 100 (24h, sai a cada 10–30 min, ~30 min até Waverley) ou táxi (~25 min, ~€35). O tram para por volta da meia-noite.",lat:55.9500,lon:-3.3725,wiki:"Edinburgh_Airport"},
-   {t:"~00:15",n:"Old Town",b:"Check-in no Airbnb: self check-in, ou chegada tarde combinada antes com o anfitrião.",lat:55.9500,lon:-3.1890,wiki:"Old_Town,_Edinburgh",sleep:true}
+   {t:"~00:15",n:"Check-in",b:"West Coates Mansion: tram ou táxi curto até Haymarket. Rosslyn Inn: táxi de ~25 min (~€50). Avisem o hotel que chegam depois da meia-noite (veja Onde dormir, abaixo).",lat:55.9500,lon:-3.1890,wiki:"Old_Town,_Edinburgh",sleep:true}
   ]
  },
  {id:"sab17",label:"Sáb 17",c:"var(--slate)",hex:"#17232B",num:"17",title:"Edimburgo, a cidade de pedra",
@@ -295,7 +295,7 @@ const DAYS = [
 const BOOK = [
  "✓ Voos Ryanair: BER→EDI sex 16 22:10 · EDI→BER sex 23 18:40",
  "✓ Holy Island, seg 19: Manor House Hotel, €218 com café (Booking)",
- "Edimburgo Old Town, sex 16 e sáb 17 (self check-in)",
+ "Edimburgo, sex 16 e sáb 17: Original Rosslyn Inn ou West Coates Mansion (avisar chegada ~00:15)",
  "Melrose, dom 18",
  "Newcastle Quayside, ter 20 a sex 23",
  "Carro automático no aeroporto de Edimburgo: retirada dom 18 ~11:45, devolução sex 23 até 16:15",
@@ -308,8 +308,46 @@ const STAYS = [
 "night": "Sex 16 e sáb 17",
 "place": "Edimburgo, Old Town",
 "n": 2,
-"why": "Vocês chegam às 23:20: prefiram self check-in, ou combinem a chegada tarde com o anfitrião. As opções mais baratas da Old Town já foram reservadas; o que sobrou para as duas noites começa em ~€390 por noite. Todas exigem no mínimo 2 noites.",
+"why": "Vocês chegam às 23:20: prefiram self check-in, ou combinem a chegada tarde com o anfitrião. Os dois hotéis primeiro: mais em conta, com estacionamento grátis e mais caráter. Depois, os Airbnbs da Old Town que ainda estão livres (mínimo de 2 noites, a partir de ~€390 por noite).",
 "opts": [
+{
+"name": "The Original Rosslyn Inn",
+"src": "Booking.com",
+"url": "https://www.booking.com/hotel/gb/the-original-rosslyn.en-gb.html?checkin=2026-10-16&checkout=2026-10-18&group_adults=2&no_rooms=1&selected_currency=GBP",
+"rating": "8,6 / 10 (480)",
+"total": 322,
+"nights": 2,
+"beds": "Quarto de casal pequeno (casal normal €493, king €611)",
+"dist": "Roslin, 300 m da Rosslyn Chapel · ~25 min de carro da Royal Mile",
+"self": null,
+"note": "Estalagem de 1827 com pub e restaurante, por onde passaram Burns e Walter Scott. Estacionamento grátis. Sexta: táxi do aeroporto ~25 min (~€50); avisem que chegam ~00:15. Domingo vocês acordam ao lado da capela.",
+"tag": "Mais interessante",
+"imgs": [
+"https://cf.bstatic.com/xdata/images/hotel/max500/19297925.jpg?k=09f49420068a0bd84334a1f875288aabf460d1563e1ed3ec1db645fe1e6deba4",
+"https://cf.bstatic.com/xdata/images/hotel/max500/568552502.jpg?k=50fa0c52b9c19c566774ca21422e817f71c9b60bce06540455ca33136f7a29f9",
+"https://cf.bstatic.com/xdata/images/hotel/max500/324284423.jpg?k=8416896536240716bc176eb11f80715108a553880bcdb8dcf7eae575bce6895d",
+"https://cf.bstatic.com/xdata/images/hotel/max500/324284404.jpg?k=0c646c8779a5c08b8b6e079e49c6e38cf913916d4788bc149cd2d6641df7764d"
+]
+},
+{
+"name": "West Coates Mansion",
+"src": "Booking.com",
+"url": "https://www.booking.com/hotel/gb/west-coates-mansion.en-gb.html?checkin=2026-10-16&checkout=2026-10-18&group_adults=2&no_rooms=1&selected_currency=GBP",
+"rating": "8,3 / 10",
+"total": 338,
+"nights": 2,
+"beds": "Cama king",
+"dist": "Perto de Haymarket · ~2,3 km da Royal Mile (15 min de tram ou ônibus)",
+"self": null,
+"note": "Mansão do século XIX com estacionamento grátis. O tram do aeroporto passa perto: chegada fácil na sexta e retirada do carro no sábado.",
+"tag": "Logística mais fácil",
+"imgs": [
+"https://cf.bstatic.com/xdata/images/hotel/max500/792447933.jpg?k=e084f143adc85e3a0832b779533db03df0ea618b9bdb3a520803ca19e9b03288",
+"https://cf.bstatic.com/xdata/images/hotel/max500/787455886.jpg?k=93cb27dacfe8b5741306fd5bdfcbb849d1b21c22b60982a5254abfbdae93597b",
+"https://cf.bstatic.com/xdata/images/hotel/max500/787456019.jpg?k=de861341cc1f3a845d6dd751c2c0d904c2b17392a6107104d9f465b3b8edfd3c",
+"https://cf.bstatic.com/xdata/images/hotel/max500/787456228.jpg?k=417ae71324469c19d7a01c7a522c0595acf927c84849a1da3cbe9de6a8221053"
+]
+},
 {
 "name": "The Old Town Snug by The Castle",
 "src": "Airbnb",
@@ -748,7 +786,7 @@ content.appendChild(ov);
 const GBP_EUR = 1.18, eur = v => Math.round(v*GBP_EUR);
 const stays = document.createElement("section");
 stays.className = "overview stays";
-stays.innerHTML = `<h2>Onde dormir</h2><p class="lead">Opções do Airbnb (e, na ilha, hotel e pub) que encontrei em 10 de outubro, para as datas e para 2 pessoas, todas com cama de casal ou king. A faixa-alvo era €118–189 por noite. Valores em euro, convertidos de libras a 1 £ = 1,18 € (câmbio de 9 de outubro); a cobrança será em libras. Preços totais da estadia, com taxas. Disponibilidade e preço mudam rápido. Deslize as fotos para o lado.</p>` +
+stays.innerHTML = `<h2>Onde dormir</h2><p class="lead">Opções do Airbnb e de hotéis que encontrei em 10 de outubro, para as datas e para 2 pessoas, todas com cama de casal ou king. A faixa-alvo era €118–189 por noite. Valores em euro, convertidos de libras a 1 £ = 1,18 € (câmbio de 9 de outubro); a cobrança será em libras. Preços totais da estadia, com taxas. Disponibilidade e preço mudam rápido. Deslize as fotos para o lado.</p>` +
   STAYS.map((n,ni)=>`<div class="night"><h3><span>${n.night} · ${n.n} noite${n.n>1?"s":""}</span>${n.place}</h3><p>${n.why}</p><div class="opts">${n.opts.map((o,oi)=>`
     <article class="opt" data-k="${ni}-${oi}">
       <div class="pics">${o.imgs.map(u=>`<img src="${u}" alt="" loading="lazy">`).join("")}</div>
@@ -765,7 +803,7 @@ stays.innerHTML = `<h2>Onde dormir</h2><p class="lead">Opções do Airbnb (e, na
 content.insertBefore(stays, ov);
 
 /* hospedagens no mapa */
-const STAY_POS = {"The Spey": [55.5995, -2.72], "The Clyde": [55.5982, -2.7205], "The Tweed": [55.59868, -2.72151], "Pergola Cottage, Gattonside": [55.60692, -2.73129], "Couples Retreat near Holy Island": [55.6569, -1.8898], "Luxury Lodge, Haggerston Castle": [55.6866, -1.9346], "West Lawn 47, Haggerston Castle": [55.68771, -1.93583], "Cuddy's Rest, Belford": [55.5972, -1.8332], "Studio no Quayside": [54.9687, -1.5972], "Elegant Riverside Apartment": [54.96924, -1.60879], "Willow Heights": [54.9677, -1.612], "30 Quayside": [54.96674, -1.61162], "Prime Location Apartment": [54.96375, -1.60948], "Manor House Hotel": [55.6688, -1.801], "The Ship Inn": [55.6693, -1.7998], "The Old Town Snug by The Castle": [55.9483, -3.1883], "Stylish castle-view townhouse": [55.9468, -3.1999], "Home by Edinburgh Castle": [55.94658, -3.19488], "Witchery at Edinburgh Castle": [55.9481, -3.1955]};
+const STAY_POS = {"The Spey": [55.5995, -2.72], "The Clyde": [55.5982, -2.7205], "The Tweed": [55.59868, -2.72151], "Pergola Cottage, Gattonside": [55.60692, -2.73129], "Couples Retreat near Holy Island": [55.6569, -1.8898], "Luxury Lodge, Haggerston Castle": [55.6866, -1.9346], "West Lawn 47, Haggerston Castle": [55.68771, -1.93583], "Cuddy's Rest, Belford": [55.5972, -1.8332], "Studio no Quayside": [54.9687, -1.5972], "Elegant Riverside Apartment": [54.96924, -1.60879], "Willow Heights": [54.9677, -1.612], "30 Quayside": [54.96674, -1.61162], "Prime Location Apartment": [54.96375, -1.60948], "Manor House Hotel": [55.6688, -1.801], "The Ship Inn": [55.6693, -1.7998], "The Old Town Snug by The Castle": [55.9483, -3.1883], "Stylish castle-view townhouse": [55.9468, -3.1999], "Home by Edinburgh Castle": [55.94658, -3.19488], "Witchery at Edinburgh Castle": [55.9481, -3.1955], "The Original Rosslyn Inn": [55.85702, -3.16395], "West Coates Mansion": [55.94586, -3.22975]};
 const STAY_HEX = ["#17232B","#7A5D8B","#2E6E8E","#A8542F"];
 const stayLayer = L.layerGroup().addTo(map), stayMarkers = {};
 STAYS.forEach((n,ni)=>n.opts.forEach((o,oi)=>{
