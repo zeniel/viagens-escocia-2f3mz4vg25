@@ -172,7 +172,7 @@
   </div>
   <div class="legend">
     <span><b>Voos</b> Ryanair sex 16 22:10 → 23:20 · volta sex 23 18:40, Edimburgo</span>
-    <span><b>Carro</b> retirado dom 18 e devolvido sex 23 no aeroporto de Edimburgo</span>
+    <span><b>Carro</b> no aeroporto de Edimburgo, sáb 17 às 00:00 até sex 23 às 17:00</span>
     <span><b>Conferência</b> qua 21 e qui 22, Glasshouse e Hilton, Gateshead</span>
     <span><b>Luz do dia</b> 07:50–18:00 · clique em qualquer parada para vê-la no mapa</span>
   </div>
@@ -193,10 +193,10 @@
 /* ---------- dados ---------- */
 const DAYS = [
  {id:"sex16",label:"Sex 16",c:"var(--basalt)",hex:"#36454D",num:"16",title:"Chegada à noite",
-  intro:"Voo Ryanair FR2377 de Berlim às 22:10, pouso em Edimburgo às 23:20. Só chegar e dormir.",
+  intro:"Voo Ryanair FR2377 de Berlim às 22:10, pouso em Edimburgo às 23:20. Pegar o carro à meia-noite e dormir.",
   stops:[
-   {t:"23:20",n:"Aeroporto de Edimburgo",b:"Ônibus Airlink 100 (24h, sai a cada 10–30 min, ~30 min até Waverley) ou táxi (~25 min, ~€35). O tram para por volta da meia-noite.",lat:55.9500,lon:-3.3725,wiki:"Edinburgh_Airport"},
-   {t:"~00:15",n:"Check-in",b:"West Coates Mansion: tram ou táxi curto até Haymarket. Rosslyn Inn: táxi de ~25 min (~€50). Avisem o hotel que chegam depois da meia-noite (veja Onde dormir, abaixo).",lat:55.9500,lon:-3.1890,wiki:"Old_Town,_Edinburgh",sleep:true}
+   {t:"23:20",n:"Aeroporto e carro",b:"Retirada do carro (pacote Expedia) às 00:00 de sábado no Car Rental Centre, a 5 min a pé do terminal. Confirmem antes que o balcão da locadora está aberto à meia-noite e que esperam se o voo atrasar; levem a carteira de motorista e o cartão de crédito no nome de quem dirige.",lat:55.9500,lon:-3.3725,wiki:"Edinburgh_Airport"},
+   {t:"~00:15",n:"Check-in",b:"De carro: ~20 min até o West Coates Mansion ou ~25 min até o Rosslyn Inn, com as ruas vazias. Avisem o hotel que chegam por volta de 00:30 (veja Onde dormir, abaixo).",lat:55.9500,lon:-3.1890,wiki:"Old_Town,_Edinburgh",sleep:true}
   ]
  },
  {id:"sab17",label:"Sáb 17",c:"var(--slate)",hex:"#17232B",num:"17",title:"Edimburgo, a cidade de pedra",
@@ -213,17 +213,17 @@ const DAYS = [
   note:{h:"Sábado inteiro",items:["Como vocês chegam na sexta à noite, o sábado é todo de Edimburgo. Castelo com entrada das 12:30–13:00, comprada online."]}
  },
  {id:"dom18",label:"Dom 18",c:"var(--heather)",hex:"#7A5D8B",num:"18",title:"Nascer do sol, Rosslyn e os Borders",
-  intro:"Arthur's Seat ao amanhecer, mercado de Stockbridge, Dean Village, e o carro no aeroporto ao meio-dia. Rosslyn Chapel, a mansão gótica de Walter Scott e a noite num vilarejo dos Borders.",
+  intro:"Arthur's Seat ao amanhecer, mercado de Stockbridge, Dean Village, e a estrada ao meio-dia. Rosslyn Chapel, a mansão gótica de Walter Scott e a noite num vilarejo dos Borders.",
   stops:[
    {t:"07:00",n:"Arthur's Seat",b:"Vulcão extinto no meio da cidade, 45 minutos de subida; o sol nasce às 07:55 e a essa hora é só de vocês.",lat:55.9441,lon:-3.1618,wiki:"Arthur's_Seat"},
    {t:"09:30",n:"Stockbridge e Dean Village",b:"Café em Stockbridge, mercado de domingo a partir das 10, e Dean Village a dez minutos a pé: vila de moinhos escondida no vale do Water of Leith.",lat:55.9522,lon:-3.2196,wiki:"Dean_Village"},
-   {t:"11:45",n:"Retirar o carro no aeroporto",b:"Saiam de Dean Village até 11:00 com as malas: 15 min a pé até Haymarket e o tram até o aeroporto (~20 min, ~€9, a cada 7 min). As locadoras ficam no Car Rental Centre, abertas no domingo. Automático, retirada e devolução no mesmo lugar, sem taxa one-way.",lat:55.9480,lon:-3.3640,wiki:"Edinburgh_Trams"},
+   {t:"11:30",n:"Voltar ao carro",b:"O carro passa o fim de semana no estacionamento grátis do hotel. Do West Coates, a Dean Village fica a 15 min a pé. Ficando no Rosslyn Inn, a capela é ao lado: vão a pé e só depois peguem a estrada.",lat:55.94586,lon:-3.22975,wiki:"Dean_Village"},
    {t:"12:30",n:"Rosslyn Chapel",b:"Capela de 1446 coberta de símbolos e lendas, o Pilar do Aprendiz, os Green Men, o Código Da Vinci. Abre ao meio-dia aos domingos; ingresso online.",lat:55.8554,lon:-3.1599,wiki:"Rosslyn_Chapel"},
    {t:"14:15",n:"Abbotsford House",b:"A casa que Walter Scott construiu como um castelo de romance gótico: armaria, biblioteca de nove mil volumes, jardins e a trilha de folclore Witch Corner. Aberta até 17:00 em outubro, última entrada 16:00.",lat:55.6000,lon:-2.7820,wiki:"Abbotsford,_Scottish_Borders"},
    {t:"16:30",n:"Melrose",b:"Check-in no vilarejo de dois mil habitantes aos pés dos Eildon Hills. Abadia por fora ao entardecer ou subida curta no Eildon North.",lat:55.5990,lon:-2.7270,wiki:"Melrose,_Scottish_Borders"},
    {t:"Noite",n:"Noite em Melrose",b:"Pubs com lareira e silêncio. Airbnb em Melrose, Gattonside (do outro lado da ponte pênsil) ou St Boswells.",lat:55.5995,lon:-2.7240,wiki:"Eildon_Hills",sleep:true}
   ],
-  note:{h:"Estrada do dia",items:["Aeroporto → Rosslyn pela A720, o anel viário (30 min) → Abbotsford pela A7 e A6091 (55 min) → Melrose (5 min). Cerca de 1h30 de volante."]}
+  note:{h:"Estrada do dia",items:["Edimburgo → Rosslyn pela A701 (25 min) → Abbotsford pela A7 e A6091 (55 min) → Melrose (5 min). Cerca de 1h30 de volante."]}
  },
  {id:"seg19",label:"Seg 19",c:"var(--sea)",hex:"#2E6E8E",num:"19",title:"Abadias, a fronteira e a ilha que fecha",
   intro:"As abadias do Tweed, o mirante de Walter Scott, a travessia para a Inglaterra em Coldstream e, à tarde, a estrada que o mar cobre até Holy Island. Às 20:10 a maré fecha a estrada e vocês ficam na ilha.",
@@ -295,10 +295,10 @@ const DAYS = [
 const BOOK = [
  "✓ Voos Ryanair: BER→EDI sex 16 22:10 · EDI→BER sex 23 18:40",
  "✓ Holy Island, seg 19: Manor House Hotel, €218 com café (Booking)",
- "Edimburgo, sex 16 e sáb 17: Original Rosslyn Inn ou West Coates Mansion (avisar chegada ~00:15)",
+ "Edimburgo, sex 16 e sáb 17: Original Rosslyn Inn ou West Coates Mansion (avisar chegada ~00:30)",
  "Melrose, dom 18",
  "Newcastle Quayside, ter 20 a sex 23",
- "Carro automático no aeroporto de Edimburgo: retirada dom 18 ~11:45, devolução sex 23 até 16:15",
+ "✓ Carro (Expedia): aeroporto de Edimburgo, sáb 17 00:00 → sex 23 17:00",
  "Castelo de Edimburgo, sáb · Real Mary King's Close, sáb 19:00 · The Witchery",
  "Rosslyn Chapel, dom 12:30 · Abbotsford · Victoria Tunnel, qui"
 ];
@@ -320,7 +320,7 @@ const STAYS = [
 "beds": "Quarto de casal pequeno (casal normal €493, king €611)",
 "dist": "Roslin, 300 m da Rosslyn Chapel · ~25 min de carro da Royal Mile",
 "self": null,
-"note": "Estalagem de 1827 com pub e restaurante, por onde passaram Burns e Walter Scott. Estacionamento grátis. Sexta: táxi do aeroporto ~25 min (~€50); avisem que chegam ~00:15. Domingo vocês acordam ao lado da capela.",
+"note": "Estalagem de 1827 com pub e restaurante, por onde passaram Burns e Walter Scott. Estacionamento grátis. Sexta: ~25 min de carro do aeroporto; avisem que chegam ~00:30. No sábado, ~25 min de carro ou ônibus 37 até o centro. Domingo vocês acordam ao lado da capela.",
 "tag": "Mais interessante",
 "imgs": [
 "https://cf.bstatic.com/xdata/images/hotel/max500/19297925.jpg?k=09f49420068a0bd84334a1f875288aabf460d1563e1ed3ec1db645fe1e6deba4",
@@ -339,7 +339,7 @@ const STAYS = [
 "beds": "Cama king",
 "dist": "Perto de Haymarket · ~2,3 km da Royal Mile (15 min de tram ou ônibus)",
 "self": null,
-"note": "Mansão do século XIX com estacionamento grátis. O tram do aeroporto passa perto: chegada fácil na sexta e retirada do carro no sábado.",
+"note": "Mansão do século XIX com estacionamento grátis. ~20 min de carro do aeroporto. No sábado, deixem o carro no hotel e vão de tram ou ônibus ao centro (15 min).",
 "tag": "Logística mais fácil",
 "imgs": [
 "https://cf.bstatic.com/xdata/images/hotel/max500/792447933.jpg?k=e084f143adc85e3a0832b779533db03df0ea618b9bdb3a520803ca19e9b03288",
@@ -764,7 +764,7 @@ ov.innerHTML = `
       <li>Mão inglesa: automático, para não trocar marcha com a esquerda enquanto reaprende a rotatória.</li>
       <li>Velocidade em mph; a A1 vira pista simples em Northumberland; muros de pedra e ovelhas nas estradas dos Borders.</li>
       <li>Em Newcastle o carro fica num estacionamento de terça a sexta (veja se o Airbnb tem vaga); tudo na cidade é a pé, Metro ou trem.</li>
-      <li>Retirada e devolução no aeroporto de Edimburgo: sem taxa one-way, e na sexta é só devolver e embarcar. Devolva até 16:15 para o voo das 18:40.</li>
+      <li>Retirada no aeroporto de Edimburgo à meia-noite de sexta para sábado, logo depois do pouso; devolução no mesmo lugar na sexta 23 até 17:00. O roteiro devolve às 16:15, com folga para o voo das 18:40.</li><li>No sábado em Edimburgo o carro fica no hotel: na Old Town estacionar custa €35–47 por dia.</li>
     </ul></div>
     <div class="card"><h3>Clima e mala</h3><ul>
       <li>Máximas de 11 a 13 °C, mínimas de 4 a 7 °C; geada possível em Melrose e na ilha.</li>
