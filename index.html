@@ -158,7 +158,7 @@
 <header class="hero">
   <div>
     <h1>Entre a névoa e a maré</h1>
-    <p>Edimburgo, os Borders de Walter Scott, uma noite ilhada em Lindisfarne, a costa de Bamburgh e Dunstanburgh, Newcastle e a Muralha de Adriano no caminho de volta. Uma semana, 16 a 23 de outubro de 2026.</p>
+    <p>Edimburgo, os Borders de Walter Scott, a ilha de Lindisfarne entre duas marés, a costa de Bamburgh e Dunstanburgh, Newcastle e a Muralha de Adriano no caminho de volta. Uma semana, 16 a 23 de outubro de 2026.</p>
   </div>
   <div class="legend">
     <span><b>Voos</b> Ryanair sex 16 22:10 → 23:20 · volta sex 23 18:40, Edimburgo</span>
@@ -216,7 +216,7 @@ const DAYS = [
   note:{h:"Estrada do dia",items:["Edimburgo → Rosslyn pela A701 (25 min) → Abbotsford pela A7 e A6091 (55 min) → Melrose (5 min). Cerca de 1h30 de volante."]}
  },
  {id:"seg19",label:"Seg 19",c:"var(--sea)",hex:"#2E6E8E",num:"19",title:"Abadias, a fronteira e a ilha que fecha",
-  intro:"As abadias do Tweed, o mirante de Walter Scott, a travessia para a Inglaterra em Coldstream e, antes das 20:10, a estrada que o mar cobre: noite em Holy Island.",
+  intro:"As abadias do Tweed, o mirante de Walter Scott, a travessia para a Inglaterra em Coldstream e, à tarde, a estrada que o mar cobre até Holy Island. Noite em Beal, do outro lado.",
   stops:[
    {t:"10:00",n:"Melrose Abbey",b:"Claustro, museu e o coração embalsamado de Robert the Bruce; a igreja está em obras de conservação, o cenário continua.",lat:55.5991,lon:-2.7175,wiki:"Melrose_Abbey"},
    {t:"11:15",n:"Scott's View e Dryburgh Abbey",b:"O mirante sobre o Tweed e os Eildon Hills, a vista favorita de Scott; logo abaixo, as ruínas de Dryburgh à beira do rio, onde ele está enterrado (jardins abertos).",lat:55.5968,lon:-2.6531,wiki:"Scott's_View"},
@@ -224,19 +224,20 @@ const DAYS = [
    {t:"13:15",n:"Kelso",b:"Almoço na praça georgiana, a maior da Escócia, com a abadia arruinada ao lado.",lat:55.5979,lon:-2.4335,wiki:"Kelso,_Scottish_Borders"},
    {t:"14:45",n:"Coldstream e Norham Castle",b:"Cruzam o Tweed para a Inglaterra em Coldstream. Norham é ruína gratuita que Turner pintou três vezes; vinte minutos.",lat:55.7224,lon:-2.1519,wiki:"Norham_Castle"},
    {t:"15:30",n:"Berwick-upon-Tweed",b:"Quarenta minutos nas muralhas elisabetanas, as mais completas da Grã-Bretanha; a cidade trocou de país treze vezes.",lat:55.7700,lon:-2.0027,wiki:"Berwick-upon-Tweed"},
-   {t:"até 16:45",n:"Travessia para Holy Island",b:"Causeway seguro das 11:10 às 20:10. Com a maré baixa a estrada cruza a areia; o pôr do sol é às 18:00.",lat:55.6762,lon:-1.8470,wiki:"Lindisfarne"},
-   {t:"Noite",n:"Noite em Holy Island",b:"Às 20:10 o mar fecha a estrada e a ilha fica com os moradores. Jantar no pub, caminhada no escuro até o castelo sobre a rocha.",lat:55.6697,lon:-1.8014,wiki:"Lindisfarne_Castle",sleep:true}
+   {t:"16:00",n:"Travessia para Holy Island",b:"Causeway seguro das 11:10 às 20:10. Com a maré baixa a estrada cruza a areia; priorado, castelo e o pôr do sol às 18:00 na ilha.",lat:55.6762,lon:-1.8470,wiki:"Lindisfarne"},
+   {t:"até 19:40",n:"Jantar na ilha e voltar",b:"Jantar cedo no Ship Inn ou no Crown & Anchor e atravessar de volta até 19:40: às 20:10 o mar fecha a estrada.",lat:55.6697,lon:-1.8014,wiki:"Lindisfarne_Castle"},
+   {t:"Noite",n:"Noite em Beal",b:"Airbnb no continente, a poucos minutos do causeway (veja Onde dormir, abaixo).",lat:55.6700,lon:-1.9000,wiki:"Lindisfarne",sleep:true}
   ],
   tide:[
    {d:"Seg 19",safe:[[11.17,20.17],[23.58,24]],marks:[{h:16.75,l:"entrar até 16:45"}]},
    {d:"Ter 20",safe:[[0,9.17],[12.33,21.33]],marks:[{h:9.0,l:"sair até 09:00"}]}
   ],
-  note:{h:"Marés de Holy Island",items:["Os horários são do Northumberland County Council, calculados para a estrada do causeway. Vento forte encurta a janela: conte 30 minutos de folga.","Se não houver pousada na ilha, durma em Beal, Fenwick ou Bamburgh e saia da ilha até 19:40."]}
+  note:{h:"Marés de Holy Island",items:["Os horários são do Northumberland County Council, calculados para a estrada do causeway. Vento forte encurta a janela: conte 30 minutos de folga.","Saiam da ilha até 19:40. Na terça, a estrada fica aberta até 09:10: dá para voltar ao amanhecer."]}
  },
  {id:"ter20",label:"Ter 20",c:"var(--moss)",hex:"#4F6B4A",num:"20",title:"A costa dos castelos",
-  intro:"Sair da ilha antes que a maré a feche de novo, Bamburgh sobre as dunas, a caminhada até Dunstanburgh, a livraria na estação de Alnwick e Warkworth no meandro do rio. Newcastle ao fim da tarde, sem pressa.",
+  intro:"A ilha ao amanhecer, se quiserem, antes que a maré a feche de novo, Bamburgh sobre as dunas, a caminhada até Dunstanburgh, a livraria na estação de Alnwick e Warkworth no meandro do rio. Newcastle ao fim da tarde, sem pressa.",
   stops:[
-   {t:"até 09:00",n:"Sair da ilha",b:"A estrada fecha às 09:10. O sol nasce às 07:50 com a ilha vazia; café antes de sair.",lat:55.6762,lon:-1.8470,wiki:"Holy_Island_of_Lindisfarne"},
+   {t:"07:30",n:"Holy Island ao amanhecer (opcional)",b:"De Beal são 5 minutos até o causeway. O sol nasce às 07:50 com a ilha vazia; saiam até 09:00, a estrada fecha às 09:10.",lat:55.6762,lon:-1.8470,wiki:"Holy_Island_of_Lindisfarne"},
    {t:"10:00",n:"Bamburgh Castle",b:"Fortaleza sobre dunas, berço do reino da Nortúmbria, Bebbanburg nos livros de Bernard Cornwell. A vista da praia já vale; os salões abrem às 10.",lat:55.6089,lon:-1.7094,wiki:"Bamburgh_Castle"},
    {t:"12:00",n:"Craster e Dunstanburgh Castle",b:"Dois quilômetros de costa a pé do vilarejo até as ruínas góticas no penhasco. Kippers defumados na volta, no galpão de 1856.",lat:55.4909,lon:-1.5940,wiki:"Dunstanburgh_Castle"},
    {t:"14:30",n:"Alnwick",b:"Barter Books, a livraria de segunda mão dentro da antiga estação, com lareiras e trem de brinquedo; o castelo dos duques de Northumberland (Harry Potter, Downton) ao lado.",lat:55.4155,lon:-1.7059,wiki:"Alnwick_Castle"},
@@ -279,7 +280,7 @@ const DAYS = [
 
 const BOOK = [
  "✓ Voos Ryanair: BER→EDI sex 16 22:10 · EDI→BER sex 23 18:40",
- "Holy Island, seg 19: Manor House Hotel (último quarto no Booking)",
+ "Beal, seg 19 (perto de Holy Island)",
  "Edimburgo Old Town, sex 16 e sáb 17 (self check-in)",
  "Melrose, dom 18",
  "Newcastle Quayside, ter 20 a sex 23",
@@ -293,7 +294,7 @@ const STAYS = [
 "night": "Sex 16 e sáb 17",
 "place": "Edimburgo, Old Town",
 "n": 2,
-"why": "Vocês chegam às 23:20: prefiram self check-in, ou combinem a chegada tarde com o anfitrião antes de reservar. Do aeroporto, ônibus Airlink 100 (24h, ~30 min) ou táxi.",
+"why": "Vocês chegam às 23:20: prefiram self check-in, ou combinem a chegada tarde com o anfitrião antes de reservar. Na Old Town não havia nada abaixo de £170/noite nessas datas.",
 "opts": [
 {
 "name": "A Wee Retreat, Cockburn Street",
@@ -321,7 +322,7 @@ const STAYS = [
 "rating": "4,78 (328)",
 "total": 294,
 "nights": 2,
-"beds": "Cama de casal + sofá-cama de casal na sala",
+"beds": "Cama de casal",
 "dist": "~590 m da Royal Mile",
 "self": true,
 "note": "Prédio histórico perto do Grassmarket e do castelo.",
@@ -377,8 +378,27 @@ const STAYS = [
 "night": "Dom 18",
 "place": "Melrose e Gattonside",
 "n": 1,
-"why": "Todas com self check-in. Várias têm dois quartos, cada um dorme no seu.",
+"why": "Todas com self check-in e cama de casal ou king para os dois.",
 "opts": [
+{
+"name": "The Spey",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/1758546049153273104?check_in=2026-10-18&check_out=2026-10-19&adults=2",
+"rating": "novo",
+"total": 135,
+"nights": 1,
+"beds": "Cama king",
+"dist": "~80 m do centro de Melrose",
+"self": true,
+"note": "Um quarto só, no centro de Melrose. Novo no Airbnb, ainda sem avaliações.",
+"tag": "",
+"imgs": [
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1758546049153273104/original/75659e6c-2d27-4a44-9701-935e551be36e.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1758546049153273104/original/c1fc3f56-aee2-4da6-ac3e-d4b2337a6b5a.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1758546049153273104/original/b785cede-6101-4dfb-84fd-bd8bd3174b6c.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1758546049153273104/original/3f4160ac-bb48-4cf4-b1ad-e793d73d8e0f.jpeg?im_w=720"
+]
+},
 {
 "name": "The Clyde",
 "src": "Airbnb",
@@ -386,11 +406,11 @@ const STAYS = [
 "rating": "4,92 (37)",
 "total": 140,
 "nights": 1,
-"beds": "2 quartos: cama king + cama de solteiro",
+"beds": "Cama king",
 "dist": "~130 m do centro de Melrose",
 "self": true,
-"note": "Na praça de Melrose, a pé da abadia e dos pubs.",
-"tag": "Recomendado",
+"note": "Na praça de Melrose, a pé da abadia e dos pubs. Tem um quarto extra que vocês não vão usar.",
+"tag": "Mais bem avaliado",
 "imgs": [
 "https://a0.muscache.com/im/pictures/miso/Hosting-687515424770323624/original/e410c09a-fd7e-4bca-afef-8945ea5ae2e8.jpeg?im_w=720",
 "https://a0.muscache.com/im/pictures/miso/Hosting-687515424770323624/original/4b910670-eb0d-4888-9267-b69c3935e5cf.jpeg?im_w=720",
@@ -405,10 +425,10 @@ const STAYS = [
 "rating": "4,84 (79)",
 "total": 144,
 "nights": 1,
-"beds": "2 quartos: cama de casal + cama de solteiro",
+"beds": "Cama de casal",
 "dist": "~160 m do centro de Melrose",
 "self": true,
-"note": "Mesmo prédio/rua do Clyde, centro de Melrose.",
+"note": "Centro de Melrose, ao lado do Clyde.",
 "tag": "",
 "imgs": [
 "https://a0.muscache.com/im/pictures/hosting/Hosting-47330025/original/53fe39bb-7611-415b-bd26-3edcdb858ed0.jpeg?im_w=720",
@@ -424,7 +444,7 @@ const STAYS = [
 "rating": "4,87 (46)",
 "total": 114,
 "nights": 1,
-"beds": "2 quartos: cama king + cama de solteiro",
+"beds": "Cama king",
 "dist": "~1170 m do centro de Melrose",
 "self": true,
 "note": "Chalé do outro lado da ponte pênsil sobre o Tweed; o mais barato.",
@@ -435,89 +455,89 @@ const STAYS = [
 "https://a0.muscache.com/im/pictures/miso/Hosting-46086448/original/266b13d1-fe39-4713-a270-93fcf1fc279f.jpeg?im_w=720",
 "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NDYwODY0NDg%3D/original/a5f8f9d5-fafe-4a32-9bbb-a1a1b13cbe02.jpeg?im_w=720"
 ]
-},
-{
-"name": "The Spey",
-"src": "Airbnb",
-"url": "https://www.airbnb.co.uk/rooms/1758546049153273104?check_in=2026-10-18&check_out=2026-10-19&adults=2",
-"rating": "novo",
-"total": 135,
-"nights": 1,
-"beds": "Cama king",
-"dist": "~80 m do centro de Melrose",
-"self": true,
-"note": "Novo no Airbnb, centro de Melrose.",
-"tag": "",
-"imgs": [
-"https://a0.muscache.com/im/pictures/hosting/Hosting-1758546049153273104/original/75659e6c-2d27-4a44-9701-935e551be36e.jpeg?im_w=720",
-"https://a0.muscache.com/im/pictures/hosting/Hosting-1758546049153273104/original/c1fc3f56-aee2-4da6-ac3e-d4b2337a6b5a.jpeg?im_w=720",
-"https://a0.muscache.com/im/pictures/hosting/Hosting-1758546049153273104/original/b785cede-6101-4dfb-84fd-bd8bd3174b6c.jpeg?im_w=720",
-"https://a0.muscache.com/im/pictures/hosting/Hosting-1758546049153273104/original/3f4160ac-bb48-4cf4-b1ad-e793d73d8e0f.jpeg?im_w=720"
-]
 }
 ]
 },
 {
 "night": "Seg 19",
-"place": "Holy Island",
+"place": "Beal e Belford, perto de Holy Island",
 "n": 1,
-"why": "No Airbnb não há nada livre na ilha nessa noite. O Manor House é o único quarto que encontrei na ilha, e o Booking marcava o último nesse preço: reserve primeiro. Se perder, durma em Beal ou Belford e visite a ilha entre 11:10 e 19:40.",
+"why": "No Airbnb não há nada livre na ilha nessa noite. Estas ficam no continente, perto da travessia: visitem a ilha à tarde, saiam até 19:40, e na terça dá para voltar ao amanhecer (estrada aberta até 09:10).",
 "opts": [
 {
-"name": "Manor House Hotel, Holy Island",
-"src": "Booking.com",
-"url": "https://www.booking.com/hotel/gb/manor-house-berwick-upon-tweed.en-gb.html?checkin=2026-10-19&checkout=2026-10-20&group_adults=2&no_rooms=1&selected_currency=GBP",
-"rating": "8,1 / 10",
-"total": 185,
+"name": "Couples Retreat near Holy Island",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/899081345555755835?check_in=2026-10-19&check_out=2026-10-20&adults=2",
+"rating": "4,97 (101)",
+"total": 299,
 "nights": 1,
-"beds": "Quarto duplo, cama de casal (há também quartos twin, com 2 camas de solteiro)",
-"dist": "Na ilha, ao lado do priorado",
-"self": null,
-"note": "Café da manhã incluído. Último quarto nesse preço quando olhei. Tel. 01289 389207.",
-"tag": "Reservar já",
+"beds": "Cama king",
+"dist": "~2,5 km do início do causeway",
+"self": true,
+"note": "O mais perto da ilha, em Beal, feito para casais. Acima do orçamento, mas é o melhor da região.",
+"tag": "Mais perto",
 "imgs": [
-"https://cf.bstatic.com/xdata/images/hotel/max500/275595831.jpg?k=27db87a16102dd73ed69c8a66fe04b6c8bca34bfa42b140fee12a4ff6043e67f",
-"https://cf.bstatic.com/xdata/images/hotel/max500/275595367.jpg?k=21e8b54e2e1c79d43ce8acb54a8de34e58b4fc748c371c9e0d5d5f2d5255f5f0",
-"https://cf.bstatic.com/xdata/images/hotel/max500/275595370.jpg?k=b6d06dc8dfe16675678671ce92b9ce59330e2b23e2a3b7adfddfacf46315c4b4",
-"https://cf.bstatic.com/xdata/images/hotel/max500/275595373.jpg?k=9169e1e24454bfbb71dfcb345acbf2cf5d2101dc24660cbd7ab490caa8acf32e"
+"https://a0.muscache.com/im/pictures/miso/Hosting-899081345555755835/original/17c01457-353f-423b-965e-74deae1425e7.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-899081345555755835/original/d8960b50-fa05-462d-ba51-ee8c90c1c114.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-899081345555755835/original/ea29c442-a9c1-440e-89a6-97916795c1f8.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/miso/Hosting-899081345555755835/original/874cb4d9-91fb-4fb2-8644-655a07671c60.jpeg?im_w=720"
 ]
 },
 {
-"name": "The Lindisfarne Inn, Beal",
-"src": "Booking.com",
-"url": "https://www.booking.com/hotel/gb/the-lindisfarne-inn.en-gb.html?checkin=2026-10-19&checkout=2026-10-20&group_adults=2&no_rooms=1&selected_currency=GBP",
-"rating": "8,5 / 10",
-"total": 109,
+"name": "Luxury Lodge, Haggerston Castle",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/1653195670825557982?check_in=2026-10-19&check_out=2026-10-20&adults=2",
+"rating": "5,0 (15)",
+"total": 155,
 "nights": 1,
-"beds": "Quarto duplo ou twin: cama de casal extra grande ou 2 de solteiro",
-"dist": "No continente, 5 min do causeway",
-"self": null,
-"note": "Café incluído e cancelamento grátis. Plano B se a ilha estiver cheia.",
-"tag": "",
+"beds": "Cama de casal",
+"dist": "~4,6 km do início do causeway",
+"self": true,
+"note": "Chalé grande no parque de férias de Haggerston Castle, em Beal. Dentro do orçamento.",
+"tag": "Recomendado",
 "imgs": [
-"https://cf.bstatic.com/xdata/images/hotel/max500/473414384.jpg?k=264afa77ca8d456cdc5f718eb77c51da7b4d4b2b294c37611de5b070356bd302",
-"https://cf.bstatic.com/xdata/images/hotel/max500/488089290.jpg?k=a38f6d1d410150120601341aaa58381bb724dcdecf4072b5ccdd5c6a90e8c602",
-"https://cf.bstatic.com/xdata/images/hotel/max500/488089183.jpg?k=ecb32a9d5a8a5a4e3cd72e3e26c61b4c52aee624704de1aeb2ca52ef5613ed01",
-"https://cf.bstatic.com/xdata/images/hotel/max500/488089213.jpg?k=dd1fc01d64575872a497ac7c7da9a65284d16026c04590d16d0bc04416613d69"
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1653195670825557982/original/db021569-03e9-4b4f-a116-c21e89909cc6.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1653195670825557982/original/c9930f81-7399-4ce3-9095-81d6ae94ea15.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1653195670825557982/original/7dd71d79-0938-4924-bea8-c96abc7307d6.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1653195670825557982/original/6c46f71e-e0a4-4ecd-9b8e-54f361a10f03.jpeg?im_w=720"
 ]
 },
 {
-"name": "Blue Bell Hotel, Belford",
-"src": "Booking.com",
-"url": "https://www.booking.com/hotel/gb/blue-bell-belford.en-gb.html?checkin=2026-10-19&checkout=2026-10-20&group_adults=2&no_rooms=1&selected_currency=GBP",
-"rating": "7,2 / 10",
-"total": 75,
+"name": "West Lawn 47, Haggerston Castle",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/1234058798490702324?check_in=2026-10-19&check_out=2026-10-20&adults=2",
+"rating": "4,71 (14)",
+"total": 138,
 "nights": 1,
-"beds": "Quarto twin: 2 camas de solteiro",
-"dist": "Belford, 15 min do causeway",
-"self": null,
-"note": "O mais barato, com café e cancelamento grátis.",
+"beds": "Cama de casal",
+"dist": "~4,7 km do início do causeway",
+"self": true,
+"note": "Caravana no mesmo parque; o mais barato.",
 "tag": "",
 "imgs": [
-"https://cf.bstatic.com/xdata/images/hotel/max500/807581714.jpg?k=b6bee693dc9a80a58854fa4fae906b25bcff97c41cc212ad5a0e5fe02b8a26e0",
-"https://cf.bstatic.com/xdata/images/hotel/max500/132154341.jpg?k=6cffd847d3f3fa8125c641de293078e3eef370fb653f4fb99bfe90d71a1d5bb5",
-"https://cf.bstatic.com/xdata/images/hotel/max500/325423490.jpg?k=86adfbe8426ea0fe5dbfe3a7af35f28cbc6c8b80920d45ff78cae72dfd87dae4",
-"https://cf.bstatic.com/xdata/images/hotel/max500/325422733.jpg?k=3c6532d69688e0ef4b85adffcee1da25cf2440348d784b96e6a5c851c8b4f5e0"
+"https://a0.muscache.com/im/pictures/prohost-api/Hosting-1234058798490702324/original/e74a469a-bb91-43c1-a8df-5874f509c9a5.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/prohost-api/Hosting-1234058798490702324/original/f5ccead8-7e87-490f-9842-8c492fcb270a.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/prohost-api/Hosting-1234058798490702324/original/da74628c-f817-4092-9598-98cb85029bd8.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/prohost-api/Hosting-1234058798490702324/original/1dda7870-b911-4b93-a059-b33bf9b3901d.jpeg?im_w=720"
+]
+},
+{
+"name": "Cuddy's Rest, Belford",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/29227913?check_in=2026-10-19&check_out=2026-10-20&adults=2",
+"rating": "4,96 (417)",
+"total": 234,
+"nights": 1,
+"beds": "Cama de casal",
+"dist": "~8,8 km do início do causeway",
+"self": true,
+"note": "Muito bem avaliado, em Belford, a caminho de Bamburgh na terça.",
+"tag": "",
+"imgs": [
+"https://a0.muscache.com/im/pictures/airflow/Hosting-29227913/original/5e4374de-534c-432d-b7c1-f61bb151ef25.jpg?im_w=720",
+"https://a0.muscache.com/im/pictures/87cb0b6e-be50-4026-8829-b1062b51e2a0.jpg?im_w=720",
+"https://a0.muscache.com/im/pictures/airflow/Hosting-29227913/original/2c13e3a6-295e-42b6-9395-6d3fa2341a07.jpg?im_w=720",
+"https://a0.muscache.com/im/pictures/airflow/Hosting-29227913/original/f1bffb9f-dd24-4d11-a5b8-d4f46508a8be.jpg?im_w=720"
 ]
 }
 ]
@@ -526,7 +546,7 @@ const STAYS = [
 "night": "Ter 20 a qui 22",
 "place": "Newcastle e Gateshead, entre o Hilton e a Glasshouse",
 "n": 3,
-"why": "O Hilton e a Glasshouse ficam a ~450 m um do outro, na margem de Gateshead. Os apartamentos ficam no Quayside, do outro lado do rio: a Millennium Bridge ou a Swing Bridge levam a pé até os dois. Distâncias em linha reta.",
+"why": "O Hilton e a Glasshouse ficam a ~450 m um do outro, na margem de Gateshead. Os apartamentos ficam no Quayside, do outro lado do rio, e a Millennium Bridge ou a Swing Bridge levam a pé até os dois. Distâncias em linha reta.",
 "opts": [
 {
 "name": "Studio no Quayside",
@@ -535,7 +555,7 @@ const STAYS = [
 "rating": "4,98 (162)",
 "total": 322,
 "nights": 3,
-"beds": "Cama king + sofá-cama",
+"beds": "Cama king",
 "dist": "~510 m do Hilton · ~110 m da Glasshouse",
 "self": false,
 "note": "O mais perto dos dois: a Millennium Bridge leva direto à Glasshouse. Muito bem avaliado. Sem self check-in.",
@@ -548,60 +568,41 @@ const STAYS = [
 ]
 },
 {
-"name": "High Quay",
+"name": "Elegant Riverside Apartment",
 "src": "Airbnb",
-"url": "https://www.airbnb.co.uk/rooms/36793454?check_in=2026-10-20&check_out=2026-10-23&adults=2",
-"rating": "4,9 (170)",
-"total": 395,
+"url": "https://www.airbnb.co.uk/rooms/1315145974759154430?check_in=2026-10-20&check_out=2026-10-23&adults=2",
+"rating": "4,84 (57)",
+"total": 453,
 "nights": 3,
-"beds": "2 quartos: cama queen + cama de casal",
-"dist": "~930 m do Hilton · ~550 m da Glasshouse",
+"beds": "Cama de casal",
+"dist": "~450 m do Hilton · ~680 m da Glasshouse",
 "self": true,
-"note": "Cada uma no seu quarto, vista para o rio. Self check-in.",
-"tag": "Dois quartos",
+"note": "Na beira do rio, perto da Swing Bridge; o Hilton fica do outro lado da ponte.",
+"tag": "",
 "imgs": [
-"https://a0.muscache.com/im/pictures/ccbab6bc-6a8f-4e91-8630-cc24ecc5eb95.jpg?im_w=720",
-"https://a0.muscache.com/im/pictures/a481dd31-7c0e-4f21-95ae-45d6f2b1a49e.jpg?im_w=720",
-"https://a0.muscache.com/im/pictures/aea926a5-4631-45d2-a5e1-b2d6ead96964.jpg?im_w=720",
-"https://a0.muscache.com/im/pictures/a007015a-6241-420c-8c3a-832fc543f0f6.jpg?im_w=720"
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1315145974759154430/original/cf632235-b718-467d-b3d5-c94f48f728da.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1315145974759154430/original/7101ba0d-ab59-47c8-a5e2-abb840b419a7.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1315145974759154430/original/f0af386b-5620-4fc4-98bc-42d8f271a568.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1315145974759154430/original/987c0da8-5d85-44f4-91ca-46fd37c20a7d.jpeg?im_w=720"
 ]
 },
 {
-"name": "Feel good flat",
+"name": "Willow Heights",
 "src": "Airbnb",
-"url": "https://www.airbnb.co.uk/rooms/1511585853797429233?check_in=2026-10-20&check_out=2026-10-23&adults=2",
-"rating": "5,0 (25)",
-"total": 419,
+"url": "https://www.airbnb.co.uk/rooms/1789806403955339559?check_in=2026-10-20&check_out=2026-10-23&adults=2",
+"rating": "novo",
+"total": 357,
 "nights": 3,
-"beds": "2 quartos: cama de casal + 2 camas de solteiro",
-"dist": "~750 m do Hilton · ~360 m da Glasshouse",
-"self": null,
-"note": "Avaliação perfeita, perto do Quayside.",
+"beds": "Cama de casal",
+"dist": "~540 m do Hilton · ~870 m da Glasshouse",
+"self": true,
+"note": "Perto da Tyne Bridge e da Swing Bridge. Novo no Airbnb, ainda sem avaliações.",
 "tag": "",
 "imgs": [
-"https://a0.muscache.com/im/pictures/hosting/Hosting-1511585853797429233/original/572ef93e-a3f5-4e8f-86c5-6ba82eb5b68b.jpeg?im_w=720",
-"https://a0.muscache.com/im/pictures/hosting/Hosting-1511585853797429233/original/71a968f1-1e27-47cf-8aa7-576a7a1dbb2b.jpeg?im_w=720",
-"https://a0.muscache.com/im/pictures/hosting/Hosting-1511585853797429233/original/0635fb11-aee9-42fb-98e8-df9656e90bf7.jpeg?im_w=720",
-"https://a0.muscache.com/im/pictures/hosting/Hosting-1511585853797429233/original/13d07cdb-3612-4ab9-a9aa-1394807eb093.jpeg?im_w=720"
-]
-},
-{
-"name": "Apartamento com vista do Quayside",
-"src": "Airbnb",
-"url": "https://www.airbnb.co.uk/rooms/1495632407719949453?check_in=2026-10-20&check_out=2026-10-23&adults=2",
-"rating": "5,0 (15)",
-"total": 423,
-"nights": 3,
-"beds": "2 quartos: cama de casal + cama de casal",
-"dist": "~950 m do Hilton · ~560 m da Glasshouse",
-"self": false,
-"note": "Vista para as pontes.",
-"tag": "",
-"imgs": [
-"https://a0.muscache.com/im/pictures/hosting/Hosting-1495632407719949453/original/f93c6a49-61e7-4a34-88ee-fa59678592ee.jpeg?im_w=720",
-"https://a0.muscache.com/im/pictures/hosting/Hosting-1495632407719949453/original/2d90e3f1-2fd4-41c8-97c0-d0a9f86c44bd.jpeg?im_w=720",
-"https://a0.muscache.com/im/pictures/hosting/Hosting-1495632407719949453/original/5946ef34-836e-4638-a389-38d886196bfa.jpeg?im_w=720",
-"https://a0.muscache.com/im/pictures/hosting/Hosting-1495632407719949453/original/3dd87912-e915-4c0a-906d-0d49eaf36400.jpeg?im_w=720"
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1789806403955339559/original/b09b0ff2-61ed-459a-8498-ec08427ab8ac.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1789806403955339559/original/ac71b622-a545-439e-ad6a-15877a109d22.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1789806403955339559/original/3f127fac-6d81-47c2-b5e1-31e9e23be835.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1789806403955339559/original/e363aa3f-fe35-4fd1-982f-755f76699c51.jpeg?im_w=720"
 ]
 },
 {
@@ -611,16 +612,34 @@ const STAYS = [
 "rating": "4,75 (48)",
 "total": 258,
 "nights": 3,
-"beds": "Cama de casal + sofá-cama",
+"beds": "Cama de casal",
 "dist": "~490 m do Hilton · ~860 m da Glasshouse",
 "self": true,
-"note": "O mais barato, ao lado da Swing Bridge.",
-"tag": "",
+"note": "Ao lado da Swing Bridge; atravessando, o Hilton fica logo acima.",
+"tag": "Mais barato",
 "imgs": [
 "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE5NjkxNDc1NDk1NDkyMzcxMQ%3D%3D/original/fd54e610-ad8b-492a-bd74-6d05e4a7fe01.jpeg?im_w=720",
 "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE5NjkxNDc1NDk1NDkyMzcxMQ%3D%3D/original/aea1c01c-dab7-455d-b6a1-1b2a45dc2f61.jpeg?im_w=720",
 "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE5NjkxNDc1NDk1NDkyMzcxMQ%3D%3D/original/9a699ae7-40e9-4815-9701-0e67d0c85366.jpeg?im_w=720",
 "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE5NjkxNDc1NDk1NDkyMzcxMQ%3D%3D/original/d7f5bce9-8826-41c0-95d4-50c870c70ac8.jpeg?im_w=720"
+]
+},
+{
+"name": "Prime Location Apartment",
+"src": "Airbnb",
+"url": "https://www.airbnb.co.uk/rooms/1656847184585710593?check_in=2026-10-20&check_out=2026-10-23&adults=2",
+"rating": "novo",
+"total": 186,
+"nights": 3,
+"beds": "Cama de casal",
+"dist": "~440 m do Hilton · ~850 m da Glasshouse",
+"self": false,
+"note": "No lado de Gateshead, perto do Hilton. Muito barato e novo no Airbnb: leia bem o anúncio.",
+"tag": "",
+"imgs": [
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1656847184585710593/original/4e0e667b-d344-4d82-86fd-45dc6ae7ca87.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1656847184585710593/original/d09c496f-96e0-425a-b1f7-4a84f33ded78.jpeg?im_w=720",
+"https://a0.muscache.com/im/pictures/hosting/Hosting-1656847184585710593/original/9d9125e5-c659-4a5b-9a20-5e4662c15e9e.jpeg?im_w=720"
 ]
 }
 ]
@@ -751,7 +770,7 @@ content.appendChild(ov);
 /* onde dormir */
 const stays = document.createElement("section");
 stays.className = "overview stays";
-stays.innerHTML = `<h2>Onde dormir</h2><p class="lead">Opções que encontrei no Airbnb e no Booking.com em 10 de outubro, para as datas e para 2 pessoas, dentro de £100–160 por noite. Preços totais da estadia, com taxas. Disponibilidade e preço mudam rápido. Deslize as fotos para o lado.</p>` +
+stays.innerHTML = `<h2>Onde dormir</h2><p class="lead">Opções do Airbnb que encontrei em 10 de outubro, para as datas e para 2 pessoas, todas com cama de casal ou king. A faixa-alvo era £100–160 por noite. Preços totais da estadia, com taxas. Disponibilidade e preço mudam rápido. Deslize as fotos para o lado.</p>` +
   STAYS.map(n=>`<div class="night"><h3><span>${n.night} · ${n.n} noite${n.n>1?"s":""}</span>${n.place}</h3><p>${n.why}</p><div class="opts">${n.opts.map(o=>`
     <article class="opt">
       <div class="pics">${o.imgs.map(u=>`<img src="${u}" alt="" loading="lazy">`).join("")}</div>
