@@ -261,7 +261,8 @@ const PROVIDERS = [
   {url:"https://tile.openstreetmap.org/{z}/{x}/{y}.png",opt:{maxZoom:19,attribution:"&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>"}},
   {url:"https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",opt:{maxZoom:18,attribution:"Tiles &copy; Esri"}}
 ];
-let baseIdx = 0, baseErrs = 0, baseLayer = null;
+/* aberto do disco: o OSM devolve um aviso de bloqueio (sem erro), então começa direto no Esri */
+let baseIdx = location.protocol==="file:" ? 1 : 0, baseErrs = 0, baseLayer = null;
 function addBase(){
   baseLayer = L.tileLayer(PROVIDERS[baseIdx].url, PROVIDERS[baseIdx].opt).addTo(map);
   baseLayer.on("tileerror", ()=>{
