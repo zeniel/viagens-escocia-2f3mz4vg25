@@ -195,7 +195,7 @@ const DAYS = [
  {id:"sex16",label:"Sex 16",c:"var(--basalt)",hex:"#36454D",num:"16",title:"Chegada à noite",
   intro:"Voo Ryanair FR2377 de Berlim às 22:10, pouso em Edimburgo às 23:20. Só chegar e dormir na Old Town.",
   stops:[
-   {t:"23:20",n:"Aeroporto de Edimburgo",b:"Ônibus Airlink 100 (24h, sai a cada 10–30 min, ~30 min até Waverley) ou táxi (~25 min, ~£30). O tram para por volta da meia-noite.",lat:55.9500,lon:-3.3725,wiki:"Edinburgh_Airport"},
+   {t:"23:20",n:"Aeroporto de Edimburgo",b:"Ônibus Airlink 100 (24h, sai a cada 10–30 min, ~30 min até Waverley) ou táxi (~25 min, ~€35). O tram para por volta da meia-noite.",lat:55.9500,lon:-3.3725,wiki:"Edinburgh_Airport"},
    {t:"~00:15",n:"Old Town",b:"Check-in no Airbnb: self check-in, ou chegada tarde combinada antes com o anfitrião.",lat:55.9500,lon:-3.1890,wiki:"Old_Town,_Edinburgh",sleep:true}
   ]
  },
@@ -217,7 +217,7 @@ const DAYS = [
   stops:[
    {t:"07:00",n:"Arthur's Seat",b:"Vulcão extinto no meio da cidade, 45 minutos de subida; o sol nasce às 07:55 e a essa hora é só de vocês.",lat:55.9441,lon:-3.1618,wiki:"Arthur's_Seat"},
    {t:"09:30",n:"Stockbridge e Dean Village",b:"Café em Stockbridge, mercado de domingo a partir das 10, e Dean Village a dez minutos a pé: vila de moinhos escondida no vale do Water of Leith.",lat:55.9522,lon:-3.2196,wiki:"Dean_Village"},
-   {t:"11:45",n:"Retirar o carro no aeroporto",b:"Saiam de Dean Village até 11:00 com as malas: 15 min a pé até Haymarket e o tram até o aeroporto (~20 min, £7,50, a cada 7 min). As locadoras ficam no Car Rental Centre, abertas no domingo. Automático, retirada e devolução no mesmo lugar, sem taxa one-way.",lat:55.9480,lon:-3.3640,wiki:"Edinburgh_Trams"},
+   {t:"11:45",n:"Retirar o carro no aeroporto",b:"Saiam de Dean Village até 11:00 com as malas: 15 min a pé até Haymarket e o tram até o aeroporto (~20 min, ~€9, a cada 7 min). As locadoras ficam no Car Rental Centre, abertas no domingo. Automático, retirada e devolução no mesmo lugar, sem taxa one-way.",lat:55.9480,lon:-3.3640,wiki:"Edinburgh_Trams"},
    {t:"12:30",n:"Rosslyn Chapel",b:"Capela de 1446 coberta de símbolos e lendas, o Pilar do Aprendiz, os Green Men, o Código Da Vinci. Abre ao meio-dia aos domingos; ingresso online.",lat:55.8554,lon:-3.1599,wiki:"Rosslyn_Chapel"},
    {t:"14:15",n:"Abbotsford House",b:"A casa que Walter Scott construiu como um castelo de romance gótico: armaria, biblioteca de nove mil volumes, jardins e a trilha de folclore Witch Corner. Aberta até 17:00 em outubro, última entrada 16:00.",lat:55.6000,lon:-2.7820,wiki:"Abbotsford,_Scottish_Borders"},
    {t:"16:30",n:"Melrose",b:"Check-in no vilarejo de dois mil habitantes aos pés dos Eildon Hills. Abadia por fora ao entardecer ou subida curta no Eildon North.",lat:55.5990,lon:-2.7270,wiki:"Melrose,_Scottish_Borders"},
@@ -294,7 +294,7 @@ const DAYS = [
 
 const BOOK = [
  "✓ Voos Ryanair: BER→EDI sex 16 22:10 · EDI→BER sex 23 18:40",
- "✓ Holy Island, seg 19: Manor House Hotel, £185 com café (Booking)",
+ "✓ Holy Island, seg 19: Manor House Hotel, €218 com café (Booking)",
  "Edimburgo Old Town, sex 16 e sáb 17 (self check-in)",
  "Melrose, dom 18",
  "Newcastle Quayside, ter 20 a sex 23",
@@ -308,7 +308,7 @@ const STAYS = [
 "night": "Sex 16 e sáb 17",
 "place": "Edimburgo, Old Town",
 "n": 2,
-"why": "Vocês chegam às 23:20: prefiram self check-in, ou combinem a chegada tarde com o anfitrião antes de reservar. Na Old Town não havia nada abaixo de £170/noite nessas datas.",
+"why": "Vocês chegam às 23:20: prefiram self check-in, ou combinem a chegada tarde com o anfitrião antes de reservar. Na Old Town não havia nada abaixo de €200/noite nessas datas.",
 "opts": [
 {
 "name": "A Wee Retreat, Cockburn Street",
@@ -745,16 +745,17 @@ ov.innerHTML = `
 content.appendChild(ov);
 
 /* onde dormir */
+const GBP_EUR = 1.18, eur = v => Math.round(v*GBP_EUR);
 const stays = document.createElement("section");
 stays.className = "overview stays";
-stays.innerHTML = `<h2>Onde dormir</h2><p class="lead">Opções do Airbnb (e, na ilha, hotel e pub) que encontrei em 10 de outubro, para as datas e para 2 pessoas, todas com cama de casal ou king. A faixa-alvo era £100–160 por noite. Preços totais da estadia, com taxas. Disponibilidade e preço mudam rápido. Deslize as fotos para o lado.</p>` +
+stays.innerHTML = `<h2>Onde dormir</h2><p class="lead">Opções do Airbnb (e, na ilha, hotel e pub) que encontrei em 10 de outubro, para as datas e para 2 pessoas, todas com cama de casal ou king. A faixa-alvo era €118–189 por noite. Valores em euro, convertidos de libras a 1 £ = 1,18 € (câmbio de 9 de outubro); a cobrança será em libras. Preços totais da estadia, com taxas. Disponibilidade e preço mudam rápido. Deslize as fotos para o lado.</p>` +
   STAYS.map((n,ni)=>`<div class="night"><h3><span>${n.night} · ${n.n} noite${n.n>1?"s":""}</span>${n.place}</h3><p>${n.why}</p><div class="opts">${n.opts.map((o,oi)=>`
     <article class="opt" data-k="${ni}-${oi}">
       <div class="pics">${o.imgs.map(u=>`<img src="${u}" alt="" loading="lazy">`).join("")}</div>
       <div class="body">
         ${o.tag?`<span class="tag">${o.tag}</span>`:""}
         <h4>${o.name}</h4>
-        <div class="meta">${o.total?`<b>£${o.total}</b> total · £${Math.round(o.total/o.nights)}/noite`:"<b>Preço sob consulta</b>"} · ★ ${o.rating}</div>
+        <div class="meta">${o.total?`<b>€${eur(o.total)}</b> total · €${eur(o.total/o.nights)}/noite`:"<b>Preço sob consulta</b>"} · ★ ${o.rating}</div>
         <div class="bed">${o.beds}</div>
         <div class="meta">${o.dist}${o.self===true?" · self check-in":""}</div>
         <p class="note">${o.note}</p>
@@ -771,7 +772,7 @@ STAYS.forEach((n,ni)=>n.opts.forEach((o,oi)=>{
   const p = STAY_POS[o.name]; if(!p) return;
   const hex = STAY_HEX[ni % STAY_HEX.length];
   const m = L.marker(p,{icon:L.divIcon({className:"",html:`<div class="pin stay" style="--c:${hex}">⌂</div>`,iconSize:[26,26],iconAnchor:[13,13],popupAnchor:[0,-12]}),title:o.name,zIndexOffset:-100});
-  m.bindPopup(`<b>${o.name}</b><br>${n.night} · ${o.total?`£${o.total} total`:"preço sob consulta"} · ${o.beds}<br><a class="pop-go" href="${o.url}" target="_blank" rel="noopener">Ver no ${o.src} ↗</a>`);
+  m.bindPopup(`<b>${o.name}</b><br>${n.night} · ${o.total?`€${eur(o.total)} total`:"preço sob consulta"} · ${o.beds}<br><a class="pop-go" href="${o.url}" target="_blank" rel="noopener">Ver no ${o.src} ↗</a>`);
   m.on("click",()=>pickStay(`${ni}-${oi}`,false));
   m.addTo(stayLayer); stayMarkers[`${ni}-${oi}`]=m;
 }));
